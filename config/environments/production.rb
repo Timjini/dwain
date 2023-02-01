@@ -85,7 +85,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :user_name => 'dwainemail', # This is the string literal 'apikey', NOT the ID of your API key
     :password => '<SENDGRID_API_KEY>', # This is the secret sendgrid API key which was issued during API key creation
-    :domain => 'dev-hl.dev',
+    :domain => 'chambersforsport.onrender.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
