@@ -83,9 +83,9 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
 
   ActionMailer::Base.smtp_settings = {
-    :user_name => 'dwainemail', # This is the string literal 'apikey', NOT the ID of your API key
+    :user_name => 'hatim.jini@gmail.com', # This is the string literal 'apikey', NOT the ID of your API key
     :password => '<SENDGRID_API_KEY>', # This is the secret sendgrid API key which was issued during API key creation
-    :domain => 'chambersforsport.onrender.com',
+    :domain => 'dev-hl.dev',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
