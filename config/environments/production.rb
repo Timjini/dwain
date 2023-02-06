@@ -63,6 +63,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "dwain_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -92,15 +93,15 @@ Rails.application.configure do
   #   :enable_starttls_auto => true
   # }
 
-  config.action_mailer.smtp_settings = {
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
-    domain: 'chambersforsport.com',
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    authentication:  :plain,
-    enable_starttls_auto: true
-  }
+  # config.action_mailer.smtp_settings = {
+  #   user_name: ENV['SENDGRID_USERNAME'],
+  #   password: ENV['SENDGRID_PASSWORD'],
+  #   domain: 'chambersforsport.com',
+  #   address: 'smtp.sendgrid.net',
+  #   port: 587,
+  #   authentication:  :plain,
+  #   enable_starttls_auto: true
+  # }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
