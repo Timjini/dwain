@@ -98,8 +98,8 @@ Rails.application.configure do
     domain: 'chambersforsport.com',
     address: 'smtp.sendgrid.net',
     port: 587,
-    authentication: => :plain,
-    enable_starttls_auto: => true
+    authentication:  :plain,
+    enable_starttls_auto: true
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
