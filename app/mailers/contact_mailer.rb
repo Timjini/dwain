@@ -7,6 +7,6 @@ class ContactMailer < ApplicationMailer
       @phone = phone
       @message = message
   
-      mail(to: 'hatim.jini@gmail.com', subject: 'Contact Message')
+      mail(to: 'dwain.chambers@chambersforsport.com', cc: 'hatim.jini@gmail.com' subject: 'Contact Message')
     end
   end

@@ -93,13 +93,13 @@ Rails.application.configure do
   # }
 
   config.action_mailer.smtp_settings = {
-    :user_name => 'apikey',
-    :password => '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',
-    :domain => 'localhost',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    user_name: 'apikey',
+    password: Rails.application.credentials.dig(:sendgrid , :api_key),
+    domain: 'chambersforsport.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: => :plain,
+    enable_starttls_auto: => true
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
