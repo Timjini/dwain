@@ -82,10 +82,20 @@ Rails.application.configure do
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
 
-  ActionMailer::Base.smtp_settings = {
-    :user_name => '<SENDGRID_USERNAME>', # This is the string literal 'apikey', NOT the ID of your API key
-    :password => '<SENDGRID_API_KEY>', # This is the secret sendgrid API key which was issued during API key creation
-    :domain => 'dev-hl.dev',
+  # ActionMailer::Base.smtp_settings = {
+  #   :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+  #   :password => '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', # This is the secret sendgrid API key which was issued during API key creation
+  #   :domain => 'chambersforsport.com',
+  #   :address => 'smtp.sendgrid.net',
+  #   :port => 587,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
+
+  config.action_mailer.smtp_settings = {
+    :user_name => 'apikey',
+    :password => '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',
+    :domain => 'localhost',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
