@@ -12,8 +12,12 @@
  *
  *= require_tree .
  *= require_self
- *= require
+ *= require app/assets/stylesheets/application.scss
  */
+
+ @import "@webpixels/css/base";
+@import "@webpixels/css/forms";
+ 
 
 body.light {
   color: black;
