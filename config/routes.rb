@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'cfs' => 'pages#cfs'
   get 'thank-you' => 'pages#thank_you'
   get 'login' => 'pages#login'
+  get 'dwain' => 'pages#dwain'
 
   #contact form
   resources :contacts, only: [:new, :create]

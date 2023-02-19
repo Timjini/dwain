@@ -1,0 +1,48 @@
+<!--====== Glightbox  Css ======-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+<!--====== VIDEO ONE PART START ======-->
+<section class="video-area video-one">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-lg-6 col-md-10">
+            <div class="video-title text-center">
+               <h5>Learn & Share</h5>
+               <h2>Talks with DWAIN</h2>
+               <p class="text-lg">
+                  Dwain’s time within athletics has unearthed many chapters which has seen him live life on both sides of the coin. Dwain has chosen to turn his experience into a vehicle that allows him to give an honest account about his life and career to date.
+               </p>
+            </div>
+            <!-- video title -->
+         </div>
+      </div>
+      <!-- row -->
+      <div class="row justify-content-center">
+         <div class="col-lg-10">
+            <div class="video-content text-center">
+               <%= image_tag "outside-training.jpg" %>
+               <a class="video-popup glightbox" href="https://www.youtube.com/watch?v=gtqwbGI-2Qk">
+               <i class="lni lni-play"></i>
+               </a>
+            </div>
+         </div>
+      </div>
+      <!-- row -->
+   </div>
+   <!-- container -->
+</section>
+<!--====== VIDEO ONE PART ENDS ======-->
+
+<!--====== Glightbox js ======-->
+<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+<script>
+      //========= glightbox
+      const videoTwo = GLightbox({
+        selector: ".glightbox",
+        type: "video",
+        source: "youtube", //vimeo, youtube or local
+        width: 900,
+        autoplayVideos: true,
+      });
+ </script>
