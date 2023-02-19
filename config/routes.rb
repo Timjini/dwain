@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'groups' => 'pages#groups'
   get 'cfs' => 'pages#cfs'
   get 'thank-you' => 'pages#thank_you'
+  get 'login' => 'pages#login'
 
   #contact form
   resources :contacts, only: [:new, :create]
