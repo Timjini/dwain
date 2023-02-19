@@ -1315,3 +1315,10 @@ h1,h2,h3,h4,h5,h6{
   line-height: 24px;
   color: #000;
 }
+
+// FAQ section 
+.faq-section:hover{
+  background-color: #868383;
+  color:#fff;
+  transform: scale(1.05);
+}
