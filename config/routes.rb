@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'login' => 'pages#login'
   get 'dwain' => 'pages#dwain'
   get 'faq'=> 'pages#faq'
+  get 'form' => 'pages#form'
 
   #contact form
   resources :contacts, only: [:new, :create]

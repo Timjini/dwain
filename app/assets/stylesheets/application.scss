@@ -12,6 +12,46 @@
 h1,h2,h3,h4,h5,h6{
     color:#fff!important;
 }
+
+.formflex{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.logocontact {
+  height: auto;
+  max-width: 500px;
+  padding-top: 2rem;
+}
+
+@media (max-width: 1500px) {
+  .logocontact {
+      max-width: 500px;
+      padding-top: 0.5rem;
+  }
+}
+
+.vis {
+  visibility: hidden;
+}
+
+.centerme{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.logocenter{
+  max-width: 200px;
+  margin: 0 auto;
+  height:auto;
+  margin-bottom: 50px;
+}
   
   // Header Logo 
   .logo{
@@ -1322,3 +1362,8 @@ h1,h2,h3,h4,h5,h6{
   color:#fff;
   transform: scale(1.05);
 }
+
+.g-list{
+  list-style-type: circle;
+}
+
