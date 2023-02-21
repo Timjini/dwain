@@ -1,115 +1,77 @@
-<!--====== NAVBAR ONE PART START ======-->
-<section class="navbar-area navbar-one ">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-12">
-            <nav class="navbar navbar-expand-lg">
-               <a href="/"class="navbar-brand" href="javascript:void(0)">
-               <%= image_tag "logo_.png", class:"logo" %>
-               </a>
-               <button
-                  class="navbar-toggler"
-                  type="button"
-                  >
-               <span class="toggler-icon"></span>
-               <span class="toggler-icon"></span>
-               <span class="toggler-icon"></span>
-               </button>
-               <div class=" navbar-collapse sub-menu-bar hidden" id="navbarOne">
-                  <ul class="navbar-nav m-auto">
-                     <li class="nav-item">
-                        <a
-                           class="page-scroll"
-                           data-bs-toggle="collapse"
-                           data-bs-target="#sub-nav1"
-                           aria-controls="sub-nav1"
-                           aria-expanded="false"
-                           aria-label="Toggle navigation"
-                           href="javascript:void(0)"
-                           >
-                           ABOUT
-                           <div class="sub-nav-toggler">
-                              <span><i class="lni lni-chevron-down"></i></span>
-                           </div>
-                        </a>
-                        <ul class="sub-menu  " id="sub-nav1">
-                           <li>
-                              <a
-                                 class="page-scroll"
-                                 data-bs-toggle="collapse"
-                                 data-bs-target="#sub-nav2"
-                                 aria-controls="sub-nav2"
-                                 aria-expanded="false"
-                                 aria-label="Toggle navigation"
-                                 href="javascript:void(0)"
-                                 >
-                                 CFS
-                                 <div class="sub-nav-toggler">
-                                    <span><i class="lni lni-chevron-down"></i></span>
-                                 </div>
-                              </a>
-                              <ul class="sub-menu collapse" id="sub-nav2">
-                                 <li>
-                                    <a href="/groups">Groups</a>
-                                 </li>
-                                 <li>
-                                    <a href="javascript:void(0)">1-1S</a>
-                                 </li>
-                                 <li>
-                                    <a href="/camps">Camps</a>
-                                 </li>
-                                 <li>
-                                    <a href="/faq">CFS</a>
-                                 </li>
-                              </ul>
-                           </li>
-                           <li><a href="/dcpa">DCPA</a></li>
-                        </ul>
-                     </li>
-                     <li class="nav-item">
-                        <a href="/dwain">DWAIN</a>
-                     </li>
-                       <li class="nav-item">
-                        <a href="/talks">TALKS</a>
-                     </li>
-                     <li class="nav-item">
-                        <a href="https://store.chambersforsport.com" target="_blank">STORE</a>
-                     </li>
-                     <li class="nav-item">
-                        <a href="/contact">CONTACT</a>
-                     </li>
-                  </ul>
-               </div>
-               <div class="navbar-btn d-none d-sm-inline-block">
-                  <ul>
-                     <li>
-                        <a class="btn primary-btn-outline" href="javascript:void(0)"
-                           >Sign In</a
-                           >
-                     </li>
-                     <li>
-                        <a class="btn primary-btn" href="javascript:void(0)"
-                           >Sign Up</a
-                           >
-                     </li>
-                  </ul>
-               </div>
-            </nav>
-            <!-- navbar -->
-         </div>
+<div class="" data-controller="hello">
+  <div class="px-6 pt-6 lg:px-8">
+    <nav class="flex items-center justify-between" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="#" class="-m-1.5 p-1.5">
+          <span class="sr-only">Chambers For Sport</span>
+          <%= image_tag "Chambersforsport_logoWhite-01.png" ,class:"logo" %>
+        </a>
       </div>
-      <!-- row -->
-   </div>
-   <!-- container -->
-</section>
-<!--====== NAVBAR ONE PART ENDS ======-->
+      <div class="flex lg:hidden">
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" 
+         data-action="click->hello#toggleNavbar" data-hello-target="burger">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a href="/cfs" class="text-red-600 font-bold leading-6 menu-item">CFS</a>
 
-<script>
-   // //===== close navbar-collapse when a  clicked
-   // let navbarTogglerOne = document.querySelector(
-   //   ".navbar-one .navbar-toggler"
-   // );
-   // navbarTogglerOne.addEventListener("click", function () {
-   //   navbarTogglerOne.classList.toggle("active");
-   // });
-</script>
+        <a href="/camps" class="text-red-600 font-bold leading-6 menu-item">CAMPS</a>
+
+        <a href="/dcpa" class="text-red-600 font-bold leading-6 menu-item">DCPA</a>
+
+        <a href="/groups" class="text-red-600 font-bold leading-6 menu-item">GROUPS</a>
+
+        <a href="/dwain" class="text-red-600 font-bold leading-6 menu-item">DWAIN</a>
+
+        <a href="/talks" class="text-red-600 font-bold leading-6 menu-item">TALKS</a>
+
+        <a href="/contact" class="text-red-600 font-bold leading-6 menu-item">CONTACT</a>
+
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a href="https://store.chambersforsport.com" class="text-white font-bold leading-6 " taget="_blank">STORE <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </nav>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+    <div role="dialog" aria-modal="true">
+      <div focus="true" class="fixed inset-0 z-10 overflow-y-auto px-6 py-6 bg-zinc-900 lg:hidden is-active" data-hello-target="navbar">
+        <div class="flex items-center justify-between">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Chambers For Sport</span>
+            <%= image_tag "Chambersforsport_logoWhite-01.png" ,class:"logo" %>
+          </a>
+          <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" data-action="click->hello#closeNavbar" data-hello-target="navbar">
+            <span class="sr-only">Close menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/10">
+            <div class="space-y-2 py-6">
+              <a href="/cfs" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7  hover:bg-gray-400/10">CFS</a>
+
+              <a href="/camps" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7  hover:bg-gray-400/10">CAMPS</a>
+
+              <a href="/dcpa" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7  hover:bg-gray-400/10">DCPA</a>
+
+              <a href="/dwain" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7  hover:bg-gray-400/10">DWAIN</a>
+
+              <a href="/talks" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7  hover:bg-gray-400/10">TALKS</a>
+
+              <a href="/contact" class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7  hover:bg-gray-400/10">CONTACT</a>
+            </div>
+            <div class="py-6">
+              <a href="https://store.chambersforsport.com" target="_blank" class="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6  hover:bg-gray-400/10">STORE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

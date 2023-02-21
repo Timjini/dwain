@@ -1367,3 +1367,18 @@ h1,h2,h3,h4,h5,h6{
   list-style-type: circle;
 }
 
+// navbar
+.is-active {
+  display:none;
+}
+
+.menu-item{
+  padding: 10px;
+  font-size: 1.1rem;
+}
+
+.menu-item:hover{
+  background-color: #fff;
+  transform: scale(1.05);
+  border-radius: 10px;
+}
