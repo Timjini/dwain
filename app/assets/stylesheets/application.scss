@@ -1365,5 +1365,35 @@ h1,h2,h3,h4,h5,h6{
 
 .g-list{
   list-style-type: circle;
+
 }
 
+// Form
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-logo {
+  width: 30%;
+  order: 1;
+}
+
+.form {
+  width: 50%;
+  order: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 50%;
+    order: 1;
+  }
+  .form {
+    width: 50%;
+    order: 2;
+  }
+}
