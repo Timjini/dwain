@@ -6,22 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-       <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="https://cdn.ayroui.com/1.0/css/bootstrap.min.css" />
+        <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 
     <!--====== Lineicons CSS ======-->
-    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
 
-    <!--====== Style css ======-->
-    <link rel="stylesheet" href="https://cdn.ayroui.com/1.0/css/starter.css" />
+    <!--====== Starter CSS ======-->
+    <link rel="stylesheet" href="assets/css/starter.css" />
+    <script src="https://cdn.ayroui.com/1.0/js/tiny-slider.js"></script>
+    <link rel="stylesheet" href="https://cdn.ayroui.com/1.0/css/tiny-slider.css" />
+
     <!--====== Bootstrap js ======-->
-    <script src="https://cdn.ayroui.com/1.0/js/bootstrap.bundle.min.js"></script>
-    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-    <body class="<%= cookies[:theme] %>">
+    <body class="">
 
       <main class="">
         <%= render 'layouts/nav'%>
