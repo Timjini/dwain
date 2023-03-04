@@ -1360,6 +1360,16 @@ h1,h2,h3,h4,h5,h6{
 
 .g-list{
   list-style-type: circle;
+
+}
+
+// Form
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 // navbar
@@ -1376,10 +1386,4 @@ h1,h2,h3,h4,h5,h6{
   background-color: #fff;
   transform: scale(1.05);
   border-radius: 10px;
-}
-
-// form 
-.formLogo{
-  max-height:180px;
-  width:auto;
 }
