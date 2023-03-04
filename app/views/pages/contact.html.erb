@@ -1,16 +1,12 @@
 
  <%= form_for Contact.new do |f| %>
 
-<section class="relative flex flex-wrap lg:h-screen lg:items-center form">
-  <div class="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
-    <div class="mx-auto max-w-lg text-center">
-      <h1 class="text-2xl font-bold sm:text-3xl">Contact Us</h1>
-
-      <p class="mt-4">
-        We are currently working on our website and will be back soon.
-      </p>
-    </div>
-
+  <div class="container">
+  <div class="row">
+   <div class="col-md-12">
+          <%= image_tag "Chambersforsport_logoWhite-01.png", class:"formLogo mx-auto" %>
+   </div>
+    <div class="col-md-6 mx-auto">
     <form action="" class="mx-auto mt-8 mb-0 max-w-md space-y-4">
     <div>
         <label for="password" class="sr-only">Full Name</label>
@@ -73,10 +69,10 @@
         </p>
         <%= f.submit "Send", class:"ml-3 inline-block rounded-lg bg-red-700 px-5 py-3 text-sm font-medium text-white" %>
       </div>
-       <div class="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
-   <%= image_tag "Chambersforsport_logoWhite-01.png", class:"absolute inset-0 w-full object-cover logo" %>
-  </div>
     </form>
+    </div>
+  </div>
   </div>
 <%end%>
-</section>
+
+<%= render 'components/map'%>

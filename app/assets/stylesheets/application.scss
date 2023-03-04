@@ -1,9 +1,4 @@
-// Sassy
 
-// body.light {
-//     color: black;
-//     background-color: white;
-//   }
   body {
     color: white;
     background-color: black;
@@ -1381,4 +1376,10 @@ h1,h2,h3,h4,h5,h6{
   background-color: #fff;
   transform: scale(1.05);
   border-radius: 10px;
+}
+
+// form 
+.formLogo{
+  max-height:180px;
+  width:auto;
 }

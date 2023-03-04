@@ -15,7 +15,7 @@
  *= require app/assets/stylesheets/application.scss
  */
 
- @import "@webpixels/css/base";
+@import "@webpixels/css/base";
 @import "@webpixels/css/forms";
  
 
