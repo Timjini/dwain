@@ -1,11 +1,3 @@
-// Sassy
-
-// body.light {
-//     color: black;
-//     background-color: white;
-//   }
-// = require main.scss
-
 
   body {
     color: white;
@@ -1380,6 +1372,11 @@ h1,h2,h3,h4,h5,h6{
   align-items: center;
 }
 
+.formLogo{
+  height:180px;
+  width:auto;
+}
+
 // navbar
 .is-active {
   display:none;
@@ -1395,25 +1392,3 @@ h1,h2,h3,h4,h5,h6{
   transform: scale(1.05);
   border-radius: 10px;
 }
-=======
-.form-logo {
-  width: 30%;
-  order: 1;
-}
-
-.form {
-  width: 50%;
-  order: 2;
-}
-
-@media screen and (min-width: 768px) {
-  .logo {
-    width: 50%;
-    order: 1;
-  }
-  .form {
-    width: 50%;
-    order: 2;
-  }
-}
-

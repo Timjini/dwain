@@ -1,15 +1,12 @@
 
  <%= form_for Contact.new do |f| %>
- <div class="form-container p-5">
-   <div class= "form">
-    <div class="mx-auto max-w-lg text-center">
-      <h1 class="text-2xl font-bold sm:text-3xl">Contact Us</h1>
 
-      <p class="mt-4">
-        We are currently working on our website and will be back soon.
-      </p>
-    </div>
-
+  <div class="container">
+  <div class="row">
+   <div class="col-md-12">
+          <%= image_tag "Chambersforsport_logoWhite-01.png", class:"formLogo mx-auto" %>
+   </div>
+    <div class="col-md-6 mx-auto">
     <form action="" class="mx-auto mt-8 mb-0 max-w-md space-y-4">
     <div>
         <label for="password" class="sr-only">Full Name</label>
@@ -74,7 +71,8 @@
       </div>
     </form>
     </div>
-
-   <%= image_tag "Chambersforsport_logoWhite-01.png", class:"form-logo" %>
+  </div>
   </div>
 <%end%>
+
+<%= render 'components/map'%>
