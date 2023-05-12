@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  # root 'pages#comingsoon'
-  root 'pages#login'
+  devise_for :users
+  root 'pages#dashboard'
+  get '/login' => 'pages#login'
+  get '/dashboard' => 'pages#dashboard'
+  get 'dashboard_demo' => 'pages#dashboard_demo'
 
   # #static pages
-  # get 'contact' => 'pages#contact'
   # get 'talks' => 'pages#talks'
   # get 'camps' => 'pages#camps'
   # get 'dcpa' => 'pages#dcpa'

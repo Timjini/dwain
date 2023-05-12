@@ -37,6 +37,8 @@ gem 'sendgrid-ruby',  '1.1.6'
 
 gem 'rack-cors'
 
+gem 'devise'
+
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
