@@ -6,15 +6,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <script src="https://cdn.tailwindcss.com"></script>
 
+    <!--====== Bootstrap js ======-->
+    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
-  <body>
-    <main class="">
-      <%= yield %>
-    </main>
-  </body>
+    <body class="">
+      <main class="">
+        <%= yield %>
+      </main>
+    </body>
 </html>

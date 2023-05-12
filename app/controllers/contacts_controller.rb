@@ -9,10 +9,16 @@ class ContactsController < ApplicationController
     
         if @contact.save
           ContactMailer.contact_email(@contact.name, @contact.email, @contact.message, @contact.phone).deliver_later
-          redirect_to thank_you_path, notice: 'Message sent successfully'
+    
+          render json: { message: 'Message sent successfully' }, status: :created
         else
-          render :new
+          render json: { errors: @contact.errors.full_messages }, status: :unprocessable_entity
         end
+      end
+
+      def index
+        @contacts = Contact.all
+        render json: @contacts
       end
 
     private

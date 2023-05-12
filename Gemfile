@@ -35,6 +35,10 @@ gem "redis", "~> 4.0"
 
 gem 'sendgrid-ruby',  '1.1.6'
 
+gem 'rack-cors'
+
+gem 'devise'
+
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -76,3 +80,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "dartsass-rails", "~> 0.4.1"
