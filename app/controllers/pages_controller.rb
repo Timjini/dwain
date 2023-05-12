@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+
+  before_action :authenticate_user!, except: [:login]
+
   def index
   end
 
@@ -21,6 +24,9 @@ class PagesController < ApplicationController
   end
 
   def comingsoon
+  end
+
+  def login
   end
   
 end
