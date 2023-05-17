@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :coaches
   devise_for :users
+
+  resources :users, only: [:index, :show, :edit, :update]
+
+  resources :coaches, only: [:index, :show, :edit, :update]
   
   # Root path for coaches
   authenticated :coach do
