@@ -13,7 +13,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		width:50vw;
+		width:50%;
 		height: 100vh;
 		text-transform: uppercase;
 		font-size: 4rem;
@@ -23,13 +23,22 @@
 		/* background-image: url("https://images.unsplash.com/photo-1474546652694-a33dd8161d66?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80");
 		background-size: cover;
 		background-position: center; */
-		color: white;
+		background: rgb(36,36,36);
+background: linear-gradient(90deg, rgba(36,36,36,1) 0%, rgba(153,27,27,1) 63%, rgba(153,27,27,1) 100%);
+		color:#f5f5f5;
 	}
 
 	.coach{
 		/* background-image: url("https://www.chambersforsport.com/images/feature.jpeg");
 		background-size: cover;
 		background-position: center; */
+		background: rgb(36,36,36);
+		background: linear-gradient(280deg, rgba(36,36,36,1) 0%, rgba(153,27,27,1) 63%, rgba(153,27,27,1) 100%);
+		color:#f5f5f5;
+	}	
+
+	.user:hover, .coach:hover{
+		opacity: 0.95;
 	}
 
 	@media screen and (max-width: 768px){
@@ -37,15 +46,42 @@
 			width: 100vw;
 		}
 	}
+
+	.btn-coach {
+		border: 2px solid white;
+		color: #242424;
+		padding: 1rem 2rem;
+		background-color: #f5f5f5;
+		margin-top: 2rem;
+		font-size: 1.2rem;
+		border-radius: 5px;
+	}
+	.btn-coach:hover {
+		background-color: #e0e0e0;
+	}
+
+	.btn-student {
+		border: 2px  ;
+		color: #f5f5f5;
+		padding: 1rem 2rem;
+		margin-top: 2rem;
+		font-size: 1.2rem;
+		border-radius: 5px;
+	}
+
+	.btn-student:hover {
+		background-color: #e0e0e0;
+		color: #242424;
+	}
 </style>
 
-<div class="login-container">
-	<div class="user bg-stone-800">
+<div class="login-container text-center">
+	<div class="user bg-stone-800 ">
 		<h1>Student access</h1>
-		<%= button_to "Enter", new_user_session_path, method: :get %>
+		<%= button_to "Enter", new_user_session_path, method: :get , class:"btn-student bg-red-800"%>
 	</div>
 	<div class="coach bg-red-800">
 		<h1>Coach access</h1>
-		<%= button_to "Enter", new_coach_session_path, method: :get %>
+		<%= button_to "Enter", new_coach_session_path, method: :get, class:"btn-coach" %>
 	</div>
 </div>
