@@ -14,6 +14,14 @@ class Coach < ApplicationRecord
       "/dark-logo.png"
     end
   end
+
+  def avatar_url
+    if avatar.attached?
+      avatar
+        else
+      "/dark-logo.png"
+    end
+  end
   
   def avatar_profile 
     if avatar.attached?

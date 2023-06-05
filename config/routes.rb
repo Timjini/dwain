@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   # Root path for coaches
   authenticated :coach do
-    root to: 'pages#dashboard_coach', as: :coach_root
+    root to: 'coaches#dashboard_coach', as: :coach_root
   end
   
   # Root path for users

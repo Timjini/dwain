@@ -1,0 +1,2 @@
+class IndividualSession < ApplicationRecord
+end

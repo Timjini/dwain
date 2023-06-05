@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Application</title>
+  <!-- Include your CSS and JavaScript assets -->
+</head>
+<body>
+  <!-- Common header/navigation -->
+  <nav>
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
+      <!-- Add more common navigation links -->
+    </ul>
+  </nav>
+
+  <!-- Flash messages -->
+  <div class="flash-messages">
+    
+  </div>
+  
+  <!-- Main content area -->
+  <div class="container">
+    <%= yield %>
+  </div>
+
+  <!-- Footer or additional content if needed -->
+  <footer>
+    <!-- Footer content -->
+  </footer>
+</body>
+</html>
