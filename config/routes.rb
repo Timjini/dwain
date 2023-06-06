@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   
   # For non-authenticated users, redirect them to the login page
   root 'pages#login'
-  
+
+  namespace :api do
+    namespace :v1 do
+      resources :individual_sessions
+    end
+  end
 
   #contact form
   resources :contacts, only: [:new, :create, :index]
