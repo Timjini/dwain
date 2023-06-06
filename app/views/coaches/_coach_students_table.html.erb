@@ -43,6 +43,7 @@
               </tr>
             </thead>
             <tbody class="text-gray-600 dark:text-gray-100">
+            <% @team_members.each do |s| %>
               <tr>
                 <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
                   <div class="flex items-center">
@@ -51,13 +52,14 @@
                       <line x1="12" y1="8" x2="12" y2="12"></line>
                       <line x1="12" y1="16" x2="12.01" y2="16"></line>
                     </svg>
-                    Team
+                     <%= s[:team_name] %>
                   </div>
                 </td>
                 <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
                   <div class="flex items-center">
-                    Username
+                    <%= s[:user].email %>
                   </div>
+                <% end %>
                 </td>
                 <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">Latest score</td>
                 <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-red-500">20 meters run</td>
