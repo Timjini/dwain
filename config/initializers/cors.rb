@@ -12,8 +12,10 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'https://chambersforsport.com' 
-    resource '/api/v1/*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+    origins 'https://www.chambersforsport.com'
+    resource '/api/v1/individual_sessions',
+      :headers => :any,
+      :methods => [:post]
   end
 
 end
