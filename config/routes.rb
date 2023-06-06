@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   # Root path for coaches
   authenticated :coach do
-    root to: 'pages#dashboard_coach', as: :coach_root
+    root to: 'coaches#dashboard_coach', as: :coach_root
   end
   
   # Root path for users
@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   
   # For non-authenticated users, redirect them to the login page
   root 'pages#login'
-  
+
+  namespace :api do
+    namespace :v1 do
+      resources :individual_sessions
+    end
+  end
 
   #contact form
   resources :contacts, only: [:new, :create, :index]

@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to  :coach , optional: true
+
+  has_many :team_memberships
+  has_many :teams, through: :team_memberships
+
+  has_one :subscription
 end
