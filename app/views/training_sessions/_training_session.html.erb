@@ -1,0 +1,92 @@
+<div id="<%= dom_id training_session %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= training_session.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= training_session.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Coach:</strong>
+    <%= training_session.coach_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Sets:</strong>
+    <%= training_session.sets %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Reps:</strong>
+    <%= training_session.reps %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Distance:</strong>
+    <%= training_session.distance %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Duration:</strong>
+    <%= training_session.duration %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Recovery:</strong>
+    <%= training_session.recovery %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Training type:</strong>
+    <%= training_session.training_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Day:</strong>
+    <%= training_session.day %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Rpe:</strong>
+    <%= training_session.rpe %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Initiation:</strong>
+    <%= training_session.initiation %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Footwear:</strong>
+    <%= training_session.footwear %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Surface:</strong>
+    <%= training_session.surface %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Extra info:</strong>
+    <%= training_session.extra_info %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Pacing times:</strong>
+    <%= training_session.pacing_times %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Media:</strong>
+    <%= training_session.media %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this training session", training_session, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this training session', edit_training_session_path(training_session), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

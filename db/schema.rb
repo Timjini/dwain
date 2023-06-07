@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_190622) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_075103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_190622) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "dob"
+    t.string "phone"
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "city"
+    t.integer "height"
+    t.integer "weight"
+    t.string "coach_type"
+    t.boolean "is_admin", default: false
+    t.boolean "is_active", default: false
     t.index ["email"], name: "index_coaches_on_email", unique: true
     t.index ["reset_password_token"], name: "index_coaches_on_reset_password_token", unique: true
   end
@@ -130,6 +142,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_190622) do
     t.string "content"
     t.string "person"
     t.string "job"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_sessions", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "coach_id"
+    t.integer "sets"
+    t.integer "reps"
+    t.string "distance"
+    t.string "duration"
+    t.string "recovery"
+    t.string "training_type"
+    t.string "day"
+    t.string "rpe"
+    t.string "initiation"
+    t.string "footwear"
+    t.string "surface"
+    t.string "extra_info"
+    t.string "pacing_times"
+    t.string "media"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
