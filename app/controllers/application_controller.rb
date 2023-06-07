@@ -4,6 +4,20 @@ class ApplicationController < ActionController::Base
     # skip CSRF token validation for JSON, JavaScript and XML requests
     protect_from_forgery with: :null_session
 
+    # santitize devise parameters
+    before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    if resource_name == :user
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight])
+    elsif resource_name == :coach
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight, :coach_type, :avatar])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight, :coach_type ,:avatar])
+    end
+  end
 
 
   def set_theme

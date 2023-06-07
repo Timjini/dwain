@@ -18,6 +18,8 @@ class CoachesController < ApplicationController
             end
             end
 
+        @coaches = Coach.where.not(id: current_coach.id).last(5)
+
     end
 
 end
