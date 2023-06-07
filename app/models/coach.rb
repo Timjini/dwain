@@ -17,11 +17,12 @@ class Coach < ApplicationRecord
 
   def avatar_url
     if avatar.attached?
-      "/storage/#{avatar.blob.key}"
+      rails_blob_path(avatar, only_path: true)
     else
       "/dark-logo.png"
     end
   end
+  
   
 
   def avatar_profile 
