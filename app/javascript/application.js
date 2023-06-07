@@ -2,3 +2,5 @@
 import { Turbo } from "@hotwired/turbo-rails"
 import "controllers"
 Turbo.start()
+
+

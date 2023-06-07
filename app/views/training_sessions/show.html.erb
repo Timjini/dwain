@@ -1,3 +1,13 @@
+<style>
+
+dt{
+  font-size: 1.25rem;
+}
+dd {
+  font-size: 1rem;
+}
+</style>
+
 
 
 <div class="sm:p-7 p-4">
@@ -6,22 +16,28 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </a>
-  <div class="items-center p-5">
+  <div class="items-center p-5 flex flex-row flex-wrap">
             <div class="video-view p-5">
               <% if @training_session.media.present?%>
               <iframe width="800" height="500"
                 src="<%=@training_session.media.sub('watch?v=', 'embed/')%>">
                 </iframe>
+                <%elsif @training_session.training_image.present?%>
+                <%= image_tag @training_session.training_image%>
                 <%else%>
-                <%= image_tag "video_placeholder.jpg", class:"w-96" %>
+                <%= image_tag "video_placeholder.jpg" %>
               <%end%>
             </div>
-    <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
-      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><%=@training_session.name%></h2>
-      <p class="mt-4 text-gray-500"><%=@training_session.description%></p>
+    <div class=" grid max-w-2xl grid-cols-1 items-center gap-x-16 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-2"><%=@training_session.name%></h2>
+        <p style="max-width:400px;margin-top:15px;">
+        <%if @training_session.description.present?%>
+        <%=@training_session.description.html_safe%>
+        <%end%>
+        </p>
       <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
         <div class="border-t border-gray-200 pt-4">
-          <dt class="font-medium text-gray-900">Metrics</dt>
+          <dt class="font-medium ">Metrics</dt>
           <dd class="mt-2 text-sm text-gray-500">
             Sets : <%=@training_session.sets%>
           </dd>
@@ -33,7 +49,7 @@
           </dd>
         </div>
         <div class="border-t border-gray-200 pt-4">
-          <dt class="font-medium text-gray-900">Recovery/Effort</dt>
+          <dt class="font-medium ">Recovery/Effort</dt>
           <dd class="mt-2 text-sm text-gray-500">
             Recovery : <%=@training_session.recovery%>
           </dd>
@@ -42,7 +58,7 @@
           </dd>
         </div>
         <div class="border-t border-gray-200 pt-4">
-          <dt class="font-medium text-gray-900">Details</dt>
+          <dt class="font-medium ">Details</dt>
           <dd class="mt-2 text-sm text-gray-500">
           Footwear : <%=@training_session.footwear%>
           </dd>
@@ -51,7 +67,7 @@
           </dd>
         </div>
         <div class="border-t border-gray-200 pt-4">
-          <dt class="font-medium text-gray-900">Initiation/Day</dt>
+          <dt class="font-medium ">Initiation/Day</dt>
           <dd class="mt-2 text-sm text-gray-500">
             Initiation : <%=@training_session.initiation%>
           </dd>
@@ -60,13 +76,13 @@
           </dd>
         </div>
         <div class="border-t border-gray-200 pt-4">
-          <dt class="font-medium text-gray-900">Extra Information</dt>
+          <dt class="font-medium ">Extra Information</dt>
           <dd class="mt-2 text-sm text-gray-500">
             <%=@training_session.extra_info%>
           </dd>
         </div>
         <div class="border-t border-gray-200 pt-4">
-          <dt class="font-medium text-gray-900">Created by</dt>
+          <dt class="font-medium ">Created by</dt>
           <dd class="mt-2 text-sm text-gray-500">
           <%if @training_session.coach.present?%>
                    <%=@training_session.coach.email %>
@@ -82,3 +98,4 @@
     </div>
   </div>
 </div>
+
