@@ -3,11 +3,12 @@ class TrainingSessionsController < ApplicationController
 
   # GET /training_sessions or /training_sessions.json
   def index
-    @training_sessions = TrainingSession.all
+    @training_sessions = TrainingSession.includes(:coach).all
   end
 
   # GET /training_sessions/1 or /training_sessions/1.json
   def show
+    @training_session = TrainingSession.find(params[:id])
   end
 
   # GET /training_sessions/new
