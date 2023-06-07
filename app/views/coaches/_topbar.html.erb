@@ -1,4 +1,5 @@
- <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800 hidden px-10">
+<% if current_coach %>
+ <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800  px-10">
       <div class="flex h-full text-gray-600 dark:text-gray-400">
         <a href="/login" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8">Team</a>
         <a href="#" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center">Students</a>
@@ -6,22 +7,29 @@
         <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center">Settings</a>
       </div>
       <div class="ml-auto flex items-center space-x-7">
+      <a href="/training_sessions/new">
         <button class="h-8 px-3 rounded-md shadow text-white bg-blue-500">New Workout</button>
+      </a>
 
         <button class="flex items-center">
           <span class="relative flex-shrink-0">
           <div class="w-7 h-7 rounded-full">
-          <% if current_coach %>
             <%= image_tag(current_coach.avatar_profile)%>
-          <% end %>
           </div>
             <span class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"></span>
           </span>
           <%= button_to "logout", destroy_coach_session_path, method: :delete, class: "ml-2" %>
-          <span class="ml-2">James Smith</span>
+          <span class="ml-2">
+            <% if current_coach.full_name.present? %>
+                <%= current_coach.full_name%>
+                <% else %>
+                <%= current_coach.email%>
+            <% end %>
+          </span>
           <svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
       </div>
     </div>
+    <% end %>
