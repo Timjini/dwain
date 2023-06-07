@@ -12,7 +12,7 @@
         <div class="space-y-4 mt-3">
           <button class="bg-white p-3 w-full flex flex-col rounded-md dark:bg-gray-800 shadow">
             <div class="flex xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-white pb-2 mb-2 xl:border-b border-gray-200 border-opacity-75 dark:border-gray-700 w-full">
-              <%= image_tag c.avatar_url, class: "w-7 h-7 mr-2 rounded-full" %>
+              <%= image_tag c.avatar_thumbnail, class: "w-7 h-7 mr-2 rounded-full" %>
                 <%if c.full_name.present?%>
                   <%=c.full_name%>
                   <%else%>
@@ -20,7 +20,7 @@
                 <%end%>
             </div>
             <div class="flex items-center w-full">
-              <div class="text-xs py-1 px-2 leading-none dark:bg-gray-900 bg-blue-100 text-blue-500 rounded-md">Team Manager</div>
+              <div class="text-xs py-1 px-2 leading-none dark:bg-gray-900 bg-blue-100 text-blue-500 rounded-md"><%=c.coach_type%></div>
               <div class="ml-auto text-xs text-gray-500"></div>
             </div>  
           </button>
