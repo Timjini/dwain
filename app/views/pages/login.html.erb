@@ -6,7 +6,23 @@
 		height: 100vh;
 		flex-direction: row;
 		flex-wrap: wrap;
+		background-image: url(<%= asset_url('athlete-starting-line-stadium.jpg') %>);
+		/* ovelay black color on background */
+		background-color: rgba(0,0,0,0.5);
+		background-size: cover;
+		background-position: center;
 	}
+
+	.login-container::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+		}
+
 
 	.user, .coach{
 		display: flex;
@@ -17,14 +33,15 @@
 		height: 100vh;
 		text-transform: uppercase;
 		font-size: 4rem;
+		z-index: 1;
 	}
 
 	.user{
 		/* background-image: url("https://images.unsplash.com/photo-1474546652694-a33dd8161d66?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80");
 		background-size: cover;
 		background-position: center; */
-		background: rgb(36,36,36);
-background: linear-gradient(90deg, rgba(36,36,36,1) 0%, rgba(153,27,27,1) 63%, rgba(153,27,27,1) 100%);
+		/* background: rgb(36,36,36);
+background: linear-gradient(90deg, rgba(36,36,36,1) 0%, rgba(153,27,27,1) 63%, rgba(153,27,27,1) 100%); */
 		color:#f5f5f5;
 	}
 
@@ -32,8 +49,8 @@ background: linear-gradient(90deg, rgba(36,36,36,1) 0%, rgba(153,27,27,1) 63%, r
 		/* background-image: url("https://www.chambersforsport.com/images/feature.jpeg");
 		background-size: cover;
 		background-position: center; */
-		background: rgb(36,36,36);
-		background: linear-gradient(280deg, rgba(36,36,36,1) 0%, rgba(153,27,27,1) 63%, rgba(153,27,27,1) 100%);
+		/* background: rgb(36,36,36);
+		background: linear-gradient(280deg, rgba(36,36,36,1) 0%, rgba(153,27,27,1) 63%, rgba(153,27,27,1) 100%); */
 		color:#f5f5f5;
 	}	
 
@@ -76,11 +93,11 @@ background: linear-gradient(90deg, rgba(36,36,36,1) 0%, rgba(153,27,27,1) 63%, r
 </style>
 
 <div class="login-container text-center">
-	<div class="user bg-stone-800 ">
+	<div class="user ">
 		<h1>Student access</h1>
 		<%= button_to "Enter", new_user_session_path, method: :get , class:"btn-student bg-red-800"%>
 	</div>
-	<div class="coach bg-red-800">
+	<div class="coach">
 		<h1>Coach access</h1>
 		<%= button_to "Enter", new_coach_session_path, method: :get, class:"btn-coach" %>
 	</div>
