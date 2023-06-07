@@ -39,7 +39,7 @@ class TrainingSessionsController < ApplicationController
   def update
     respond_to do |format|
       if @training_session.update(training_session_params)
-        format.html { redirect_to training_session_url(@training_session), notice: "Training session was successfully updated." }
+        format.html { redirect_to training_session_path(@training_session), notice: "Training session was successfully created." }
         format.json { render :show, status: :ok, location: @training_session }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class TrainingSessionsController < ApplicationController
     @training_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to training_sessions_url, notice: "Training session was successfully destroyed." }
+      format.html { redirect_to training_session_path, notice: "Training session was successfully destroyed." }
       format.json { head :no_content }
     end
   end
