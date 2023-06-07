@@ -22,9 +22,10 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :coach_id %>
-    <%= form.number_field :coach_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.hidden_field :coach_id, value: current_coach.id %>
   </div>
+
+
 
   <div class="my-5">
     <%= form.label :sets %>

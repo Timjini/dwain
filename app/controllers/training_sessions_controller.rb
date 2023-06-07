@@ -26,7 +26,7 @@ class TrainingSessionsController < ApplicationController
 
     respond_to do |format|
       if @training_session.save
-        format.html { redirect_to training_session_url(@training_session), notice: "Training session was successfully created." }
+        format.html { redirect_to training_session_path(@training_session), notice: "Training session was successfully created." }
         format.json { render :show, status: :created, location: @training_session }
       else
         format.html { render :new, status: :unprocessable_entity }
