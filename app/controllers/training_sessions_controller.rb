@@ -38,7 +38,7 @@ class TrainingSessionsController < ApplicationController
   # PATCH/PUT /training_sessions/1 or /training_sessions/1.json
   def update
     respond_to do |format|
-      if @training_session.update(training_session_params)
+      if @training_session.update(training_session_params.merge(description: params[:description]))
         format.html { redirect_to training_session_path(@training_session), notice: "Training session was successfully created." }
         format.json { render :show, status: :ok, location: @training_session }
       else
@@ -66,6 +66,6 @@ class TrainingSessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def training_session_params
-      params.require(:training_session).permit(:name, :description, :coach_id, :sets, :reps, :distance, :duration, :recovery, :training_type, :day, :rpe, :initiation, :footwear, :surface, :extra_info, :pacing_times, :media)
+      params.require(:training_session).permit(:name, :description, :coach_id, :sets, :reps, :distance, :duration, :recovery, :training_type, :day, :rpe, :initiation, :footwear, :surface, :extra_info, :pacing_times, :media, :image)
     end
 end
