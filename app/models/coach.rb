@@ -9,12 +9,22 @@ class Coach < ApplicationRecord
 
   def avatar_thumbnail
     if avatar.attached?
-      avatar.variant(resize_to_fill: [40, 40]).processed
+      avatar.variant(resize_to_fill: [60, 60]).processed
         else
       "/dark-logo.png"
     end
   end
+
+  def avatar_url
+    if avatar.attached?
+      rails_blob_path(avatar, only_path: true)
+    else
+      "/dark-logo.png"
+    end
+  end
   
+  
+
   def avatar_profile 
     if avatar.attached?
       avatar
@@ -22,5 +32,12 @@ class Coach < ApplicationRecord
       "dark-logo.png"
     end
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  # coach_type enum 
+  enum coach_type: { coach: "coach", admin: "admin", manager: "manager" }
 
 end

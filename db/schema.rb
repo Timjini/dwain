@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_17_133709) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_075103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_133709) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "dob"
+    t.string "phone"
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "city"
+    t.integer "height"
+    t.integer "weight"
+    t.string "coach_type"
+    t.boolean "is_admin", default: false
+    t.boolean "is_active", default: false
     t.index ["email"], name: "index_coaches_on_email", unique: true
     t.index ["reset_password_token"], name: "index_coaches_on_reset_password_token", unique: true
   end
@@ -63,10 +75,95 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_133709) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_feedbacks_on_coach_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "individual_sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "coach_id", null: false
+    t.date "session_date"
+    t.time "session_time"
+    t.integer "duration"
+    t.string "location"
+    t.string "status"
+    t.string "booking_type"
+    t.string "payment_status"
+    t.string "payment_method"
+    t.string "payment_id"
+    t.string "payment_amount"
+    t.string "payment_currency"
+    t.string "payment_description"
+    t.string "student_full_name"
+    t.string "student_email"
+    t.string "student_phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_individual_sessions_on_coach_id"
+    t.index ["user_id"], name: "index_individual_sessions_on_user_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "status"
+    t.date "start_date"
+    t.date "end_date"
+    t.float "amout"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
+  create_table "team_memberships", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_memberships_on_team_id"
+    t.index ["user_id"], name: "index_team_memberships_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.bigint "coach_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_teams_on_coach_id"
+  end
+
   create_table "testimonials", force: :cascade do |t|
     t.string "content"
     t.string "person"
     t.string "job"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_sessions", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "coach_id"
+    t.integer "sets"
+    t.integer "reps"
+    t.string "distance"
+    t.string "duration"
+    t.string "recovery"
+    t.string "training_type"
+    t.string "day"
+    t.string "rpe"
+    t.string "initiation"
+    t.string "footwear"
+    t.string "surface"
+    t.string "extra_info"
+    t.string "pacing_times"
+    t.string "media"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,10 +176,39 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_133709) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "dob"
+    t.string "phone"
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "city"
+    t.integer "height"
+    t.integer "weight"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workouts", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.string "title"
+    t.date "release_date"
+    t.string "video_link"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_workouts_on_coach_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "feedbacks", "coaches"
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "individual_sessions", "coaches"
+  add_foreign_key "individual_sessions", "users"
+  add_foreign_key "subscriptions", "users"
+  add_foreign_key "team_memberships", "teams"
+  add_foreign_key "team_memberships", "users"
+  add_foreign_key "teams", "coaches"
+  add_foreign_key "workouts", "coaches"
 end
