@@ -18,7 +18,11 @@ module Dwain
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.action_controller.default_url_options = { host: 'localhost', port: 3000 }
+    config.action_controller.default_url_options = { host: 'club.chambersforsport.com' }
+
+    config.assets.enabled = true
+    config.assets.compile = true
+
     
   end
 end
