@@ -9,9 +9,13 @@
 
     <!--====== Bootstrap js ======-->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/3mk5o23hkyrskem3znmtueksqvwmq3muu10fw1m90uiwvuru/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <%= javascript_importmap_tags %>
+    <% content_for :head do %>
+      <%= javascript_import_module_tag "controllers" %>
+    <% end %>
     <%= favicon_link_tag 'favicon.ico' %>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
       tinymce.init({
         selector: '.tinymce',
