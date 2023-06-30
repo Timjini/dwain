@@ -12,7 +12,7 @@
 
 # seed.rb
 
-Create 20 users
+# Create 20 users
 20.times do |n|
     User.create!(
       email: Faker::Internet.email,
