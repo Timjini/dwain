@@ -13,7 +13,11 @@ class User < ApplicationRecord
 
   def age
     now = Time.now.utc.to_date
+    if dob.nil?
+      return "undefined"
+    else
     now.year - dob.year - (dob.to_date.change(:year => now.year) > now ? 1 : 0)
+    end
   end
 
   def user_category
