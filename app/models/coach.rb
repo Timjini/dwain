@@ -37,6 +37,10 @@ class Coach < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def full_address
+    "#{address} #{city}"
+  end
+
   # coach_type enum 
   enum coach_type: { coach: "coach", admin: "admin", manager: "manager" }
 

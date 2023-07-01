@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   # Root path for coaches
   authenticated :coach do
     root to: 'coaches#dashboard_coach', as: :coach_root
-    get 'coaches/:id', to: 'coaches#show' 
+    get 'coaches/:id', to: 'coaches#show' ,  constraints: { id: /\d+/ }
   end
+
+  # Coach User Routes 
+  get '/my_profile', to: 'coaches#profile'
   
   # Root path for users
   authenticated :user do

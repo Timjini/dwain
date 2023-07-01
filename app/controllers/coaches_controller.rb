@@ -29,7 +29,7 @@ class CoachesController < ApplicationController
     end
 
     def profile
-        
+        @coach = current_coach
     end
 
 end
