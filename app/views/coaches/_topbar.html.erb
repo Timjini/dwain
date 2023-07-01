@@ -21,13 +21,16 @@
     padding: 5px;
 }
 </style>
+
+ <% current_path = request.path %>
+ 
 <% if current_coach %>
  <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800  px-10">
       <div class="flex h-full text-gray-600 dark:text-gray-400">
-        <a href="/teams" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8">Team</a>
-        <a href="#" class="cursor-pointer h-full border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white inline-flex mr-8 items-center">Students</a>
+        <a href="/teams" class="cursor-pointer h-full border-b-2  inline-flex items-center mr-8  <%= request.path == "/teams" ? "border-blue-500 text-blue-500 dark:text-white dark:border-white border-b-2 " : "border-transparent" %>"">Team</a>
+        <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex mr-8 items-center">Students</a>
         <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8">Current Competitions</a>
-        <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center">Settings</a>
+        <a href="/coaches/edit" class="cursor-pointer h-full border-b-2  inline-flex items-center <%= request.path == "/coaches/edit" ? "border-blue-500 text-blue-500 dark:text-white dark:border-white border-b-2 " : "border-transparent" %>""">Settings</a>
       </div>
       <div class="ml-auto flex items-center space-x-7">
       <a href="/training_sessions/new">
@@ -55,7 +58,7 @@
           </button>
           <div class="drop-menu-profile hidden">
           <ul>
-          <li>item1</li>
+          <li>My Profile</li>
           <li>item2</li>
           <li>item3</li>
           <li><%= button_to "logout", destroy_coach_session_path, method: :delete, class: "h-8 px-3 rounded-md shadow text-white bg-red-500" %> </li>

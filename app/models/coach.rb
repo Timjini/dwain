@@ -11,7 +11,7 @@ class Coach < ApplicationRecord
     if avatar.attached?
       avatar.variant(resize_to_fill: [60, 60]).processed
         else
-      "/dark-logo.png"
+      "/assets/user.png"
     end
   end
 
@@ -19,7 +19,7 @@ class Coach < ApplicationRecord
     if avatar.attached?
       rails_blob_path(avatar, only_path: true)
     else
-      "/dark-logo.png"
+      "/assets/user.png"
     end
   end
   
@@ -29,7 +29,7 @@ class Coach < ApplicationRecord
     if avatar.attached?
       avatar
         else
-      "dark-logo.png"
+      "/assets/user.png"
     end
   end
 

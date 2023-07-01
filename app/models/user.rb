@@ -26,7 +26,7 @@ class User < ApplicationRecord
       "Child"
     when 13..18
       "Junior"
-    when 19..40
+    when 19..60
       "Senior"
     end
   end

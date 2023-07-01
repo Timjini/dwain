@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Root path for coaches
   authenticated :coach do
     root to: 'coaches#dashboard_coach', as: :coach_root
+    get 'coaches/:id', to: 'coaches#show' 
   end
   
   # Root path for users

@@ -5,21 +5,31 @@ class CoachesController < ApplicationController
     end
 
     def dashboard_coach
-        team = Team.where(coach_id: current_coach.id).first
+        teams = Team.where(coach_id: current_coach.id)
+        @team_members = []
 
-            if team.nil?
-                @team_members = []
-            else
-            memberships = TeamMembership.where(team_id: team.id)
+        teams.each do |team|
+        memberships = TeamMembership.where(team_id: team.id)
 
-            @team_members = memberships.map do |membership|
-                # push user and user's team membership id into hash
-                { user: User.find(membership.user_id), membership_id: membership.id , team_id: team.id, team_name: team.name}
-            end
-            end
+        team_members = memberships.map do |membership|
+            {
+            user: User.find(membership.user_id),
+            membership_id: membership.id,
+            team_id: team.id,
+            team_name: team.name
+            }
+        end
+
+        @team_members.concat(team_members)
+        end
+
 
         @coaches = Coach.where.not(id: current_coach.id).last(5)
 
+    end
+
+    def profile
+        
     end
 
 end
