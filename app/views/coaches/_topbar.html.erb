@@ -1,6 +1,6 @@
 <style>
 .drop-menu-profile{
-    position: absolute;
+    /* position: absolute;
     right: 40px;
     width: 150px;
     height: auto;
@@ -8,7 +8,8 @@
     z-index: 100;
     background-color: #242424;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 5px; */
+    margin-top:48px;
 }
 
 .drop-menu-profile ul{
@@ -57,12 +58,17 @@
             </svg>
           </button>
           <div class="drop-menu-profile hidden">
-          <ul>
-          <li><a href="/my_profile">Profile</a></li>
-          <li>Students</li>
-          <li>Teams</li>
-          <li><%= button_to "logout", destroy_coach_session_path, method: :delete, class: "h-8 px-3 rounded-md shadow text-white bg-red-500" %> </li>
-          </ul>
+
+  <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    <div class="py-1" role="none">
+      <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+      <a href="/my_profile" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+      <%= button_to "logout", destroy_coach_session_path, method: :delete, class: "text-gray-700 block w-full px-4 py-2 text-left text-sm" %>
+    </div>
+</div>
+
           </div>
         </div>
       </div>

@@ -1,0 +1,9 @@
+<%=@workout.inspect%>
+
+            <%= image_tag(@workout.image_thumbnail, class:"w-12 mr-4 rounded-full")%>
+
+<video width="320" height="240" controls>
+  <source src="<%= @workout.video_url %>" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>

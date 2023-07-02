@@ -225,6 +225,8 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    sweetalert2 (7.25.6)
+      railties (>= 3.1.0)
     tailwindcss-rails (2.0.29-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.2)
@@ -277,6 +279,7 @@ DEPENDENCIES
   sendgrid-ruby (= 1.1.6)
   sprockets-rails
   stimulus-rails
+  sweetalert2
   tailwindcss-rails
   turbo-rails
   tzinfo-data

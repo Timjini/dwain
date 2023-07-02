@@ -30,6 +30,8 @@ class CoachesController < ApplicationController
 
     def profile
         @coach = current_coach
+        @training_sessions = TrainingSession.where(coach_id: current_coach.id)
+        @workouts = Workout.where(coach_id:current_coach.id)
     end
 
 end
