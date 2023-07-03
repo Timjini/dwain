@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
 
     def index
-        @workouts = Workout.all
+        @workouts = Workout.includes(:coach).all
     end
 
     def show

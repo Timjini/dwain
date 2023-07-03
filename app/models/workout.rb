@@ -1,4 +1,5 @@
 class Workout < ApplicationRecord
+  belongs_to :coach
 
     has_one_attached :image
     has_one_attached :video

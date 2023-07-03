@@ -26,46 +26,47 @@
 
 </style>
 <div class="p-10 px-24">
-  <%= form_with(model: @training_session, data: { turbolinks: true }) do |form| %>
+    <%= form_with(model: @training_session, data: { turbolinks: true }) do |form| %>
 
-  <div class="formContainer">
-    <div class="form-row">
-      <div class="form-col">
-       <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+    <div class="formContainer">
+        <div class="form-row">
+            <div class="form-col">
+                <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
                 <%= form.text_field :name, autofocus: true, class:"border rounded px-2 py-2" %>
-      </div>
-      <div class="form-col">
-         <label for="media" class="block text-sm font-medium leading-6 text-gray-900" id="videoLink">Video Link</label>
+            </div>
+            <div class="form-col">
+                <label for="media" class="block text-sm font-medium leading-6 text-gray-900" id="videoLink">Video Link</label>
                 <%= form.text_field :media, autofocus: true, class:"border rounded px-2 py-2 videoLink", placeholder:"https://" %>
-      </div>
-       <div class="form-col">
-      </div>
+            </div>
+            <div class="form-col"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-col">
+                <label for="rpe" class="block text-sm font-medium leading-6 text-gray-900">RPE:</label>
+                <div class="relative inline-block text-left">
+                    <%= form.select :rpe, TrainingSession::rpes, {}, class: 'border rounded px-8 py-2' %>
+                </div>
+            </div>
+            <div class="form-col">
+                <label for="sets" class="block text-sm font-medium leading-6 text-gray-900">Sets:</label>
+                <div class="relative inline-block text-left"></div>
+            </div>
+            <div class="form-col">
+                <label for="reps" class="block text-sm font-medium leading-6 text-gray-900">Reps:</label>
+                <div class="relative inline-block text-left"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+          <%=form.file_field :image%>
+        </div>
+
     </div>
 
-     <div class="form-row">
-      <div class="form-col">
-        <label for="rpe" class="block text-sm font-medium leading-6 text-gray-900">RPE:</label>
-        <div class="relative inline-block text-left">
-          <%= form.select :rpe, TrainingSession::rpes, {}, class: 'border rounded px-8 py-2' %>
-        </div>
-      </div>
-      <div class="form-col">
-        <label for="sets" class="block text-sm font-medium leading-6 text-gray-900">Sets:</label>
-        <div class="relative inline-block text-left">
-        </div>
-      </div>
-       <div class="form-col">
-        <label for="reps" class="block text-sm font-medium leading-6 text-gray-900">Reps:</label>
-        <div class="relative inline-block text-left">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <%=form.submit%>
-
-  <% end %>
+    <%=form.submit%> <% end %>
 </div>
+
 
 <script>
 $(document).ready(function() {

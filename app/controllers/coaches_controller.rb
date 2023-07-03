@@ -22,9 +22,13 @@ class CoachesController < ApplicationController
 
         @team_members.concat(team_members)
         end
-
-
         @coaches = Coach.where.not(id: current_coach.id).last(5)
+
+        # get training sessions by today's day of the week
+        @training_sessions = TrainingSession.all
+        @training_sessions_today = @training_sessions.select do |training_session|
+            training_session.day == Date.today.strftime("%A")
+        end
 
     end
 
