@@ -107,6 +107,9 @@ Rails.application.configure do
   #   enable_starttls_auto: true
   # }
 
+  config.action_controller.default_url_options = { host: 'club.chambersforsport.com' }
+
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
