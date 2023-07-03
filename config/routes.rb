@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # Coach User Routes 
   get '/my_profile', to: 'coaches#profile'
+  get '/teams', to: 'coaches#teams'
 
   resources :workouts, only: [:index, :show, :edit, :update, :create, :new]
   

@@ -24,4 +24,28 @@ class TrainingSession < ApplicationRecord
           "video_placeholder.jpg"
         end
     end
+
+    enum set:{
+      "1" => 1
+    }
+
+    RPE_OPTIONS = [
+    ['Very Light Activity: 1', '1'],
+    ['Light Activity: 2-3', '2-3'],
+    ['Moderate Activity: 4-6', '4-6'],
+    ['Vigorous Activity: 7-8', '7-8'],
+    ['Very Hard Activity: 9', '9'],
+    ['Max Effort Activity: 10', '10']
+  ].freeze
+
+  def self.rpes
+    RPE_OPTIONS
+  end
+
+    enum day: {
+      "Monday" => 1,
+      "Tuesday" => 2,
+      "Wedneday" => 3,
+      "Thursday"=>4
+    }
 end
