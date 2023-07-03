@@ -15,7 +15,9 @@ class Workout < ApplicationRecord
 
     def image_url
         if image.attached?
-            image.url
+            image
+            else
+            "/assets/user.png"
         end
     end
 
