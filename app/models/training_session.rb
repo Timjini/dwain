@@ -42,10 +42,4 @@ class TrainingSession < ApplicationRecord
     RPE_OPTIONS
   end
 
-    # enum day: {
-    #   "Monday" => 1,
-    #   "Tuesday" => 2,
-    #   "Wedneday" => 3,
-    #   "Thursday"=>4
-    # }
 end
