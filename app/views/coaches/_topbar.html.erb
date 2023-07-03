@@ -1,87 +1,129 @@
 <style>
-.drop-menu-profile{
-    /* position: absolute;
-    right: 40px;
-    width: 150px;
-    height: auto;
-    margin-top: 200px;
-    z-index: 100;
-    background-color: #242424;
-    color: #fff;
-    border-radius: 5px; */
-    margin-top:48px;
+
+#setting-dropdown{
+  margin-top:60px;
+  background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  margin-right:10px;
+  color:#f5f5f5;
+}
+#mobile-dropdown{
+  margin-top:60px;
+  background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  margin-right:10px;
+  color:#f5f5f5;
 }
 
-.drop-menu-profile ul{
-    list-style: none;
-    padding: 5px;
-    margin: 5px;
+svg{
+  cursor:pointer;
 }
 
-.drop-menu-profile ul li{
-    padding: 5px;
+.relatively{
+  min-width: 200px;
 }
+
 </style>
-
- <% current_path = request.path %>
- 
-<% if current_coach %>
- <div class="h-16 lg:flex w-full border-b border-gray-200 dark:border-gray-800  px-10">
-      <div class="flex h-full text-gray-600 dark:text-gray-400">
-        <a href="/teams" class="cursor-pointer h-full border-b-2  inline-flex items-center mr-8  <%= request.path == "/teams" ? "border-blue-500 text-blue-500 dark:text-white dark:border-white border-b-2 " : "border-transparent" %>"">Team</a>
-        <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex mr-8 items-center">Students</a>
-        <a href="#" class="cursor-pointer h-full border-b-2 border-transparent inline-flex items-center mr-8">Current Competitions</a>
-        <a href="/coaches/edit" class="cursor-pointer h-full border-b-2  inline-flex items-center <%= request.path == "/coaches/edit" ? "border-blue-500 text-blue-500 dark:text-white dark:border-white border-b-2 " : "border-transparent" %>""">Settings</a>
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main="" navbar-scroll="true">
+   <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+      <nav>
+         <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="leading-normal text-sm">
+               <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
+            </li>
+            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600  aria-current="page">/ Dashboard</li>
+         </ol>
+         <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+      </nav>
+      <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+         <div class="flex items-center md:ml-auto md:pr-4">
+            <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease-soft">
+               <span class="text-sm ease-soft leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+               <i class="fas fa-search" aria-hidden="true"></i>
+               </span>
+               <input type="text" class="pl-9 text-sm focus:shadow-soft-primary-outline ease-soft w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow" placeholder="Type here...">
+            </div>
+         </div>
+         <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
+            <li class="flex items-center">
+               <%= image_tag(current_coach.avatar_thumbnail, class:"w-8 mr-4 rounded-full")%>
+            </li>
+            <li class="flex items-center pl-4" onclick="toggleDropdown('mobile-dropdown')">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+               </svg>
+            </li>
+            <ul id="mobile-dropdown" class="text-sm transform-dropdown before:font-awesome before:leading-default before:duration-350 before:ease-soft lg:shadow-soft-3xl duration-250 min-w-44 before:sm:right-7.5 before:text-5.5 pointer-events-none absolute right-0 top-0 z-50 origin-top list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:right-2 before:left-auto before:top-0 before:z-50 before:inline-block before:font-normal before:text-white before:antialiased before:transition-all sm:-mr-6 lg:absolute lg:right-0 lg:left-auto lg:mt-2 lg:block lg:cursor-pointer">
+               <li class="relative relatively mb-2">
+                  <a class="ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 hover:bg-gray-200 hover:text-slate-700 lg:transition-colors" href="javascript:;">
+                     <div class="flex py-1">
+                        <div class="my-auto">
+                           <img src="../assets/img/team-2.jpg" class="inline-flex items-center justify-center mr-4 text-white text-sm h-9 w-9 max-w-none rounded-xl">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                           <h6 class="mb-1 font-normal leading-normal text-sm"><span class="font-semibold">New message</span> from Laur</h6>
+                           <p class="mb-0 leading-tight text-xs text-slate-400">
+                              <i class="mr-1 fa fa-clock" aria-hidden="true"></i>
+                              setting
+                           </p>
+                        </div>
+                     </div>
+                  </a>
+               </li>
+               <!-- More list items here -->
+            </ul>
+            </li>
+            <li class="flex items-center px-4" onclick="toggleDropdown('setting-dropdown')">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+               </svg>
+               <ul id="setting-dropdown" class="text-sm transform-dropdown before:font-awesome before:leading-default before:duration-350 before:ease-soft lg:shadow-soft-3xl duration-250 min-w-44 before:sm:right-7.5 before:text-5.5 pointer-events-none absolute right-0 top-0 z-50 origin-top list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:right-2 before:left-auto before:top-0 before:z-50 before:inline-block before:font-normal before:text-white before:antialiased before:transition-all sm:-mr-6 lg:absolute lg:right-0 lg:left-auto lg:mt-2 lg:block lg:cursor-pointer">
+                  <li class="relative relatively mb-2">
+                     <a class="ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 hover:bg-gray-100 hover:text-slate-700 lg:transition-colors" href="javascript:;">
+                        <div class="flex py-1">
+                           <div class="flex flex-col justify-center">
+                              <h6 class="mb-1 font-normal leading-normal text-sm"><span class="font-semibold">Profile</span></h6>
+                           </div>
+                        </div>
+                     </a>
+                  </li>
+                  <li class="relative relatively mb-2">
+                     <a class="ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 hover:bg-gray-100 hover:text-slate-700 lg:transition-colors" href="javascript:;">
+                        <div class="flex py-1">
+                           <div class="flex flex-col justify-center">
+                              <h6 class="mb-1 font-normal leading-normal text-sm"><span class="font-semibold">Profile</span></h6>
+                           </div>
+                        </div>
+                     </a>
+                  </li>
+                  <li class="relative relatively mb-2">
+                     <a class="ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 hover:bg-gray-100 hover:text-slate-700 lg:transition-colors" href="javascript:;">
+                        <div class="flex py-1">
+                           <div class="flex flex-col justify-center">
+                              <h6 class="mb-1 font-normal leading-normal text-sm"><span class="font-semibold">Profile</span></h6>
+                           </div>
+                        </div>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
       </div>
-      <div class="ml-auto flex items-center space-x-7">
-      <a href="/training_sessions/new">
-        <button class="h-8 px-3 rounded-md shadow text-white bg-blue-500">New Training</button>
-      </a>
+   </div>
+</nav>
 
-        <div class="flex items-center">
-          <span class="relative flex-shrink-0">
-          <div class="w-7 h-7 rounded-full">
-            <%= image_tag(current_coach.avatar_thumbnail, class:"w-12 mr-4 rounded-full")%>
-          </div>
-            <span class="absolute right-0 -mb-0.5 bottom-0 w-2 h-2 rounded-full bg-green-500 border border-white dark:border-gray-900"></span>
-          </span>
-          <span class="ml-2">
-            <% if current_coach.full_name.present? %>
-                <%= current_coach.full_name%>
-                <% else %>
-                <%= current_coach.email%>
-            <% end %>
-          </span>
-          <button id="toggleBtn">
-            <svg viewBox="0 0 24 24" class="w-4 ml-1 flex-shrink-0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          <div class="drop-menu-profile hidden">
-
-  <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-    <div class="py-1" role="none">
-      <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-      <a href="/my_profile" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
-      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
-      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
-      <%= button_to "logout", destroy_coach_session_path, method: :delete, class: "text-gray-700 block w-full px-4 py-2 text-left text-sm" %>
-    </div>
-</div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
 
 <script>
-
-const toggle = document.getElementById('toggleBtn');
-
-toggle.addEventListener('click', (e) => {
-  const dropMenu = document.querySelector('.drop-menu-profile');
-  dropMenu.classList.toggle('hidden');
-});
-
+  function toggleDropdown(dropdownId) {
+    console.log("clicked")
+    const dropdown = document.getElementById(dropdownId);
+    dropdown.classList.toggle('opacity-0');
+    dropdown.classList.toggle('opacity-100');
+    dropdown.classList.toggle('pointer-events-none');
+  }
 </script>

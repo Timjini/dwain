@@ -1,118 +1,70 @@
 
-<div class="p-10">
-<%= form_with(model: @training_session, data: { turbolinks: false }) do |form| %>
+<style>
+.my-class{
+  flex-wrap: wrap;
+}
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+.formContainer{
+  padding:50px;
+  border-radius:20px;
+  background: #fff;
+}
 
-   <div class="col-span-full">
-          <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Cover photo</label>
-          <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-            <div class="text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
-              </svg>
-              <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                    <%= form.file_field :image %>
-                </label>
-              </div>
-              <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-            </div>
-          </div>
+.form-row{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.form-col{
+  padding: 10px;
+}
+
+.videoLink{
+  min-width:600px;
+}
+
+</style>
+<div class="p-10 px-24">
+  <%= form_with(model: @training_session, data: { turbolinks: true }) do |form| %>
+
+  <div class="formContainer">
+    <div class="form-row">
+      <div class="form-col">
+       <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+                <%= form.text_field :name, autofocus: true, class:"border rounded px-2 py-2" %>
+      </div>
+      <div class="form-col">
+         <label for="media" class="block text-sm font-medium leading-6 text-gray-900" id="videoLink">Video Link</label>
+                <%= form.text_field :media, autofocus: true, class:"border rounded px-2 py-2 videoLink", placeholder:"https://" %>
+      </div>
+       <div class="form-col">
+      </div>
+    </div>
+
+     <div class="form-row">
+      <div class="form-col">
+        <label for="rpe" class="block text-sm font-medium leading-6 text-gray-900">RPE:</label>
+        <div class="relative inline-block text-left">
+          <%= form.select :rpe, TrainingSession::rpes, {}, class: 'border rounded px-8 py-2' %>
         </div>
-
-  <div class="my-5">
-    <%= form.hidden_field :coach_id, value: current_coach.id %>
+      </div>
+      <div class="form-col">
+        <label for="sets" class="block text-sm font-medium leading-6 text-gray-900">Sets:</label>
+        <div class="relative inline-block text-left">
+        </div>
+      </div>
+       <div class="form-col">
+        <label for="reps" class="block text-sm font-medium leading-6 text-gray-900">Reps:</label>
+        <div class="relative inline-block text-left">
+        </div>
+      </div>
+    </div>
   </div>
 
+  <%=form.submit%>
 
-<div class="row">
-  <div class="my-5">
-    <%= form.label :sets %>
-    <%= form.number_field :sets, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :reps %>
-    <%= form.number_field :reps, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-</div>
-
-  <div class="my-5">
-    <%= form.label :distance %>
-    <%= form.text_field :distance, class: "block shadow rounded-md border border-gray-200  text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :duration %>
-    <%= form.text_field :duration, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :recovery %>
-    <%= form.text_field :recovery, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :training_type %>
-    <%= form.text_field :training_type, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :day %>
-    <%= form.text_field :day, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :rpe %>
-    <%= form.text_field :rpe, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :initiation %>
-    <%= form.text_field :initiation, class: "block shadow rounded-md border border-gray-200  text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :footwear %>
-    <%= form.text_field :footwear, class: "block shadow rounded-md border border-gray-200  text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :surface %>
-    <%= form.text_field :surface, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :extra_info %>
-    <%= form.text_field :extra_info, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :pacing_times %>
-    <%= form.text_field :pacing_times, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :media %>
-    <%= form.text_field :media, class: "block shadow rounded-md border border-gray-200 text-gray-500 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= text_area_tag :description, "write a description...", class: "tinymce" %>
-  </div>
-
-      
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
-
-<% end %>
-
+  <% end %>
 </div>
 
 <script>
