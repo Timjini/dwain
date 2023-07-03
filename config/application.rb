@@ -23,7 +23,7 @@ module Dwain
     # config.action_controller.default_url_options = { host: 'club.chambersforsport.com' }
     
     # development 
-    config.action_controller.default_url_options = { host: 'localhost:3000' } 
+    #config.action_controller.default_url_options = { host: 'localhost:3000' } 
 
     config.assets.enabled = true
     config.assets.compile = true
