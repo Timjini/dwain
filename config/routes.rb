@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update]
   resources :coaches, only: [:index, :show, :edit, :update]
-  resources :teams, only: [:index, :show, :edit, :update, :create, :new]
+  # resources :teams, only: [:index, :show, :edit, :update, :create, :new]
   
   # Root path for coaches
   authenticated :coach do
