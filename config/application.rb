@@ -28,6 +28,7 @@ module Dwain
     config.assets.enabled = true
     config.assets.compile = true
 
+    config.force_ssl = true
     
   end
 end
