@@ -1,9 +1,104 @@
-<%=@workout.inspect%>
+<style>
 
-            <%= image_tag(@workout.image_thumbnail, class:"w-12 mr-4 rounded-full")%>
+dt{
+  font-size: 1.25rem;
+}
+dd {
+  font-size: 1rem;
+}
+</style>
 
-<video width="320" height="240" controls>
-  <source src="<%= @workout.video_url %>" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-  Your browser does not support the video tag.
-</video>
+
+
+<div class="sm:p-7 p-4">
+          <a href="/workouts">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </a>
+  <div class="items-center p-5 flex flex-row flex-wrap">
+            <div class="video-view p-5">
+              <% if @workout.video_url.present?%>
+              <video width="800" height="800" controls>
+                <source src="<%=@workout.video_url%>" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+                <%elsif @workout.video_link.present?%>
+                <iframe width="800" height="800"
+                src="<%=@workout.video_link.sub('watch?v=', 'embed/')%>">
+              </iframe>
+                <%else%>
+                <%= image_tag @workout.image_url%>
+              <%end%>
+            </div>
+    <div class=" gap-x-16 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-2"><%=@workout.title%></h2>
+        <p style="max-width:400px;margin-top:15px;">
+        <%if @workout.description.present?%>
+        <%=@workout.description.html_safe%>
+        <%end%>
+        </p>
+      <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium ">Metrics</dt>
+          <dd class="mt-2 text-sm text-gray-500">
+            Sets : 
+          </dd>
+          <dd class="mt-2 text-sm text-gray-500">
+            Duration : 
+          </dd>
+          <dd class="mt-2 text-sm text-gray-500">
+            Pacing times : <%=@workout.created_at%>
+          </dd>
+        </div>
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium ">Recovery/Effort</dt>
+          <dd class="mt-2 text-sm text-gray-500">
+            Recovery : 
+          </dd>
+          <dd class="mt-2 text-sm text-gray-500">
+            Reps : 
+          </dd>
+        </div>
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium ">Details</dt>
+          <dd class="mt-2 text-sm text-gray-500">
+          Footwear : 
+          </dd>
+          <dd class="mt-2 text-sm text-gray-500">
+          Surface : 
+          </dd>
+        </div>
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium ">Initiation/Day</dt>
+          <dd class="mt-2 text-sm text-gray-500">
+            Initiation :
+          </dd>
+          <dd class="mt-2 text-sm text-gray-500">
+          Date : 
+          </dd>
+        </div>
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium ">Extra Information</dt>
+          <dd class="mt-2 text-sm text-gray-500">
+            
+          </dd>
+        </div>
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium ">Created by</dt>
+          <dd class="mt-2 text-sm text-gray-500">
+          <%if @workout.coach.present?%>
+                   <%=@workout.coach.email %>
+                  <%end%>
+                  <a href="/workouts/<%=@workout.id%>/edit">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                      </svg>
+                    </a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+

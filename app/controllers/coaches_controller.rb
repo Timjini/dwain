@@ -34,8 +34,15 @@ class CoachesController < ApplicationController
 
     def profile
         @coach = current_coach
-        @training_sessions = TrainingSession.where(coach_id: current_coach.id)
+        # find training sessions by day of the week
+        @training_sessions = TrainingSession.all
+        @training_sessions_today = @training_sessions.select do |training_session|
+            training_session.day == Date.today.strftime("%A")
+        end
+        
         @workouts = Workout.where(coach_id:current_coach.id)
+
+        @last_workout = Workout.last
     end
 
     def teams

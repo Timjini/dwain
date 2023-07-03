@@ -3,13 +3,10 @@
     background-color: #f0f4f8;
   }
 
-  .sidebar{
-    /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
-  }
 </style>
 <% current_path = request.path %>
 
-<div class="sidebar bg-white dark:bg-gray-900 dark:border-gray-800 w-24 flex-shrink-0 border-r border-gray-200 flex-col hidden sm:flex">
+<div class="bg-grey-100 dark:bg-gray-900 dark:border-gray-800 w-24 flex-shrink-0 border-r border-gray-200 flex-col hidden sm:flex">
   <div class="mt-5 h-16 text-blue-500 flex items-center justify-center">
     <a href="/">
     <%= image_tag "cfs-dark.png" , class:"w-14" %>
