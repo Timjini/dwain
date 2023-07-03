@@ -51,18 +51,18 @@
   )
 end
 
-10.times do |n|
-  Team.create!(
-    name: Faker::Team.name,
-    coach_id: Faker::Number.between(from: 1, to: 10)
-  )
+# 10.times do |n|
+#   Team.create!(
+#     name: Faker::Team.name,
+#     coach_id: Faker::Number.between(from: 1, to: 10)
+#   )
 
-end
+# end
 
-10.times do |n|
-  TeamMembership.create!(
-    user_id: Faker::Number.between(from: 1, to: 10),
-    team_id: Faker::Number.between(from: 1, to: 10)
-  )
-end
+# 10.times do |n|
+#   TeamMembership.create!(
+#     user_id: Faker::Number.between(from: 1, to: 10),
+#     team_id: Faker::Number.between(from: 1, to: 10)
+#   )
+# end
   
