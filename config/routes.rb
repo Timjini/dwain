@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:index, :show, :edit, :update]
-
   resources :coaches, only: [:index, :show, :edit, :update]
+  resources :teams, only: [:index, :show, :edit, :update, :create, :new]
   
   # Root path for coaches
   authenticated :coach do
