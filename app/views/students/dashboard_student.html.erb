@@ -11,7 +11,7 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <a href="/teams">
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Teams</p>
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">My Team</p>
                                 <h5 class="mb-0 font-bold">
                                     
                                     <span class="leading-normal text-sm font-weight-bolder text-lime-500"></span>
@@ -39,9 +39,8 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Students</p>
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">My Assignements</p>
                                 <h5 class="mb-0 font-bold">
-                                    <%=@team_members.count%>
                                     <span class="leading-normal text-sm font-weight-bolder text-lime-500"></span>
                                 </h5>
                             </div>
@@ -65,7 +64,7 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">FeedBacks</p>
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Coach Feedback</p>
                                 <h5 class="mb-0 font-bold">
                                     
                                     <span class="leading-normal text-red-600 text-sm font-weight-bolder"></span>
@@ -90,7 +89,7 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Comments</p>
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Workout comments</p>
                                 <h5 class="mb-0 font-bold">
                                     
                                     <span class="leading-normal text-sm font-weight-bolder text-lime-500"></span>
@@ -203,6 +202,11 @@
 </div>
 <%end%>
 
+<div class="row ">
+    <div class="col-md-6 col-sm-12 px-3 mt-6">
+    <%= render 'students/calendar'%>
+    </div>
+</div>
 
 
     <div class="flex flex-wrap mt-6 -mx-3 hidden">

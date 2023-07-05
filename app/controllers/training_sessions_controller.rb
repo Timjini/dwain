@@ -3,7 +3,13 @@ class TrainingSessionsController < ApplicationController
 
   # GET /training_sessions or /training_sessions.json
   def index
-    @training_sessions = TrainingSession.includes(:coach).all
+      @training_sessions = TrainingSession.includes(:coach).all
+
+
+       respond_to do |format|
+      format.html # Render the HTML view as usual
+      format.turbo_stream # Render Turbo Streams format for updates
+    end
   end
 
   # GET /training_sessions/1 or /training_sessions/1.json
