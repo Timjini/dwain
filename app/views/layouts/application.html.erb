@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <%= javascript_importmap_tags %>
     <% content_for :head do %>
@@ -31,23 +31,33 @@
   </head>
 
     <body class="">
-      <main class="">
-      <% if coach_signed_in? %>
-        <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
-          <%=render 'coaches/sidebar'%>
-            <div class="flex-grow overflow-hidden h-full flex flex-col">
-            <%=render 'coaches/topbar'%>
-              <div class="flex-grow overflow-auto">
-                <%= yield %>
-              </div>
-            </div>
+          <%= render 'shared/flash_messages' %> <!-- Add this line to render flash messages -->
+  <main class="">
+    <% if coach_signed_in? %>
+      <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
+        <%= render 'coaches/sidebar' %>
+        <div class="flex-grow overflow-hidden h-full flex flex-col">
+          <%= render 'coaches/topbar' %>
+          <div class="flex-grow overflow-auto">
+            <%= yield %>
           </div>
-      <% elsif user_signed_in? %>
-          <%=yield%>
-      <% else %>
-        <%=yield%>
-      <% end %>
-      </main>
+        </div>
+      </div>
+    <% elsif user_signed_in? %>
+       <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
+        <%= render 'students/sidebar' %>
+        <div class="flex-grow overflow-hidden h-full flex flex-col">
+          <%= render 'students/topbar' %>
+          <div class="flex-grow overflow-auto">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </main>
 </body>
+
 
 </html>

@@ -1,6 +1,4 @@
-<% if resource.errors.any? %>
-  <script>
-   <% flash.each do |type, message| %>
+<% flash.each do |type, message| %>
   <script>
     Swal.fire({
       title: "<%= type.to_s.titleize %>",
@@ -9,8 +7,6 @@
       showConfirmButton: false,
       timer: 3000
     });
-  </script>
-<% end %>
-
+    console.log("flash")
   </script>
 <% end %>

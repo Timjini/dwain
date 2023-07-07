@@ -9,7 +9,7 @@ class Workout < ApplicationRecord
         if video.attached?
             video.url
         else
-            "/assets/user.mp4"
+            "/assets/running.jpg"
         end
     end
 
@@ -17,7 +17,7 @@ class Workout < ApplicationRecord
         if image.attached?
             image
             else
-            "/assets/user.png"
+            "/assets/running.jpg"
         end
     end
 

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :avatar
 
   belongs_to  :coach , optional: true
 
@@ -20,6 +21,14 @@ class User < ApplicationRecord
     end
   end
 
+  def avatar_thumbnail
+    if avatar.attached?
+      avatar.variant(resize: "150x150!").processed
+    else
+      "/assets/user.png"
+    end
+  end
+
   def user_category
     case age 
     when 0..12
@@ -33,5 +42,9 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def full_address
+    "#{address} #{city}"
   end
 end
