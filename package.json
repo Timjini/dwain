@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "debounce": "^1.2.1"
+    "debounce": "^1.2.1",
+    "sweetalert2": "^11.7.12"
   }
 }

@@ -4,6 +4,10 @@ class WorkoutsController < ApplicationController
         @workouts = Workout.includes(:coach).all
     end
 
+    def gallery
+        @workouts = Workout.includes(:coach).all
+    end
+
     def show
         @workout = Workout.find(params[:id])
     end

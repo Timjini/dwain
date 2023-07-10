@@ -1,0 +1,12 @@
+<div class="relative mt-6 flex-1 px-4 sm:px-6">
+
+              <%= form_for @team do |f| %>
+                <%= f.text_area :name, placeholder: "Team Name", class:"dark:text-dark" %>
+                <%= f.file_field :logo %>
+                <%= f.hidden_field :coach_id, value: current_coach.id %>
+
+                <%= f.submit %>
+              <% end %>
+
+
+</div>

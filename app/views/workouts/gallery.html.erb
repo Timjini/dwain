@@ -1,0 +1,31 @@
+    
+    <section class="pt-5">
+        <div class="container pt-5">
+            <div class="row p-2">
+             <% if @workouts.present? %>
+                <% @workouts.each do |workout| %>
+                <div class="col-md-4 p-2 mt-5">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                      <%= image_tag workout.image_url, class: "w-full" %>
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2"><%workout.title%></div>
+                            <p class=" text-base">
+                                <%workout.description%>
+                            </p>
+                        </div>
+                        <div class="px-6 pt-4 pb-2">
+                            <a href="/workouts/<%=workout.id%>" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">view</a>
+                        </div>
+                        </div>
+                </div>
+                <% end %>
+                <% else %>
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert">
+                        No workouts found!
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    <section>
