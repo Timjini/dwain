@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :training_sessions
+  resources :training_sessions , only: %i[index show create update destroy new edit] do 
+    collection  do
+      post :bulk_create
+    end
+  end
 #  devise_for :coaches, controllers: { sessions: 'devise/sessions' }
 
   devise_for :users

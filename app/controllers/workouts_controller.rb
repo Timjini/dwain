@@ -13,7 +13,12 @@ class WorkoutsController < ApplicationController
     end
 
     def edit
+      if current_coach.present?
         @workout = Workout.find(params[:id])
+        else
+        flash[:alert] = "You are not allowed to edit"
+        redirect_to root_path
+    end
     end
 
     def update 

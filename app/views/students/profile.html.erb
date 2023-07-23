@@ -215,14 +215,10 @@ before:inline-block before:w-6 before:h-6 before: checked:before:bg-blue-200 bef
                               </a>
                               <p class="mb-6 leading-normal text-sm"><%=w.description%></p>
                               <div class="flex items-center justify-between">
-                               <a href="workouts/<%=w.id%>">
+                               <a href="/workouts/<%=w.id%>">
                                  <button type="button" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500">View Workout</button>
                                  <div class="mt-2">
-                                    <a href="<%=w.video_link%>" class="relative z-20 inline-flex items-center justify-center w-6 h-6 text-white transition-all duration-200 border-2 border-white border-solid ease-soft-in-out text-xs rounded-circle hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                                    Video Link
-                                    </a>
-                                    <a href="javascript:;" class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid ease-soft-in-out text-xs rounded-circle hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                                    </a>
+
                                  </div>
                               </div>
                            </div>
