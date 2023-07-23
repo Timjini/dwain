@@ -11,6 +11,9 @@ Rails.application.routes.draw do
             get 'profile' , to: 'students#profile'
         end
     end
+  
+  get 'goals_rewards_achievements' , to: 'students#goals_rewards_achievements'
+
 
   resources :coaches, only: [:index, :show, :edit, :update]
   # resources :teams, only: [:index, :show, :edit, :update, :create, :new]
