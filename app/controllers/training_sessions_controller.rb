@@ -1,5 +1,6 @@
 class TrainingSessionsController < ApplicationController
   before_action :set_training_session, only: %i[ show edit update destroy ]
+  require 'csv'
 
   # GET /training_sessions or /training_sessions.json
   def index
@@ -7,8 +8,8 @@ class TrainingSessionsController < ApplicationController
 
 
        respond_to do |format|
-      format.html # Render the HTML view as usual
-      format.turbo_stream # Render Turbo Streams format for updates
+      format.html # Regular HTML response for non-Turbo Stream requests
+      format.turbo_stream # Turbo Stream response
     end
   end
 
@@ -51,6 +52,42 @@ class TrainingSessionsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @training_session.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def bulk_create
+    uploaded_file = params[:file]
+
+    if uploaded_file.present? && uploaded_file.content_type == 'text/csv'
+      #newFileName = upload_file_to_server(params[:csv_file], "df", "content_files/tmp")
+      path = Rails.root.join('public', 'uploads', 'tmp', uploaded_file)
+      list = CSV.read(path, headers: true, encoding: "utf-8")
+
+      # # Use `tempfile` to get the temporary file path
+      # temp_file_path = uploaded_file.tempfile.path
+
+      # # Move the temporary file to the public directory
+      # FileUtils.mkdir_p(File.dirname(file_path))
+      # FileUtils.mv(temp_file_path, file_path)
+      if !list.nil? && !list.empty?
+        list.each do |item|
+          if !item[0].nil?
+            row = item[0].split(';')
+            ts = TrainingSession.new
+            ts.name = row[0]
+            ts.description = row[1]
+            ts.media = row[2]
+            ts.coach_id = current_coach.id
+            ts.save!
+          end
+        end
+      end
+
+      flash[:success] = "Training Sessions created successfully!"
+      redirect_to training_sessions_path
+    else
+      flash[:alert] = "Please upload a valid CSV file."
+      redirect_to new_training_session_path
     end
   end
 

@@ -48,6 +48,9 @@ class StudentsController < ApplicationController
 
     end
 
+    def goals_rewards_achievements
+    end
+
 
 
 end

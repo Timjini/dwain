@@ -4,13 +4,40 @@ class WorkoutsController < ApplicationController
         @workouts = Workout.includes(:coach).all
     end
 
+    def gallery
+        @workouts = Workout.includes(:coach).all
+    end
+
     def show
         @workout = Workout.find(params[:id])
     end
 
     def edit
+      if current_coach.present?
         @workout = Workout.find(params[:id])
+        else
+        flash[:alert] = "You are not allowed to edit"
+        redirect_to root_path
     end
+    end
+
+    def update 
+        @workout = Workout.find(params[:id])
+        @workout.description = params[:description]
+        @workout.title = params[:title]
+        @workout.video_link = params[:video_link]
+        @workout.coach_id = params[:coach_id]
+        @workout.release_date = params[:release_date]
+
+        if @workout.update(workout_params)
+            flash[:success] = "Workout updated"
+            redirect_to workout_path(@workout)
+        else
+            flash[:alert] = "Something went wrong"
+            render :edit
+        end
+    end
+
 
     def new
         @workout = Workout.new
@@ -34,7 +61,7 @@ class WorkoutsController < ApplicationController
     private
 
     def workout_params
-        params.require(:workout).permit(:title, :description, :release_date, :video, :video_link, :coach_id, :video)
+        params.require(:workout).permit(:title, :description, :release_date, :video, :video_link, :coach_id, :image)
     end
 
 end
