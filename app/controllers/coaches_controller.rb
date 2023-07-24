@@ -63,6 +63,8 @@ class CoachesController < ApplicationController
             training_session.day == Date.today.strftime("%A")
         end
 
+        @training = Training.new
+
     end
 
     def profile

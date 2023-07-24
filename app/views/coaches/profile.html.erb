@@ -110,6 +110,12 @@ before:inline-block before:w-6 before:h-6 before: checked:before:bg-blue-200 bef
                         <label for="launches projects" class="w-4/5 mb-0 ml-4 overflow-hidden font-normal cursor-pointer select-none text-sm text-ellipsis whitespace-nowrap text-slate-500">New launches and projects</label>
                      </div>
                   </li>
+                  <li class="relative block px-0 py-2  border-0 rounded-t-lg text-inherit">
+                  <%= form_with(url: bulk_create_trainings_path, local: true, method: :post, multipart: true) do |form| %>
+  <%= form.file_field :file, accept: '.csv' %>
+  <%= form.submit 'Upload CSV' %>
+<% end %>
+                  </li>
                </ul>
             </div>
          </div>
