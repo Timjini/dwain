@@ -53,7 +53,7 @@ class TrainingsController < ApplicationController
             redirect_to trainings_path
         else
             flash[:alert] = "Please upload a valid CSV file."
-            redirect_to new_trainings_path
+            redirect_to "/my_profile"
         end
     end
 

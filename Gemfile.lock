@@ -89,6 +89,8 @@ GEM
       xpath (~> 3.2)
     case_transform (0.2)
       activesupport
+    chart-js-rails (0.1.7)
+      railties (> 3.1)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     dartsass-rails (0.4.1)
@@ -263,6 +265,7 @@ DEPENDENCIES
   active_model_serializers
   bootsnap
   capybara
+  chart-js-rails
   dartsass-rails (~> 0.4.1)
   debug
   devise

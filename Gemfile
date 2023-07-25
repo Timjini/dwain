@@ -47,6 +47,8 @@ gem 'faker'
 
 gem 'sweetalert2'
 
+gem 'chart-js-rails'
+
 
 
 
