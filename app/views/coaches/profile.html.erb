@@ -169,7 +169,7 @@ before:inline-block before:w-6 before:h-6 before: checked:before:bg-blue-200 bef
             <div class="flex-auto p-4">
                <ul class="flex flex-col pl-0 mb-0 rounded-lg">
                <% if @training_sessions.present?%>
-                           <% @training_sessions.each do |ts| %> 
+                           <% @training_sessions.last(5).each do |ts| %> 
                   <li class="relative flex items-center px-0 py-2 mb-2  border-0 rounded-t-lg text-inherit">
                      <div class="inline-flex items-center justify-center w-12 h-12 mr-4 text-white transition-all duration-200 text-base ease-soft-in-out rounded-xl">
                         <%= image_tag (ts.training_small), class: "w-full shadow-soft-2xl rounded-xl" %>
@@ -200,7 +200,7 @@ before:inline-block before:w-6 before:h-6 before: checked:before:bg-blue-200 bef
                <div class="flex-auto p-4">
                   <div class="flex flex-wrap -mx-3">
                   <% if !@workouts.nil?%>
-                     <% @workouts.each do |w| %> 
+                     <% @workouts.last(2).each do |w| %> 
                      <div class="w-full max-w-full px-3 mb-6 md:w-6/12 md:flex-none xl:mb-0 xl:w-3/12">
                         <div class="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                            <div class="relative">

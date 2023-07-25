@@ -63,6 +63,54 @@ class TrainingsController < ApplicationController
         Date.strptime(date_string, date_format)
     end
 
+    def generate_calendar_data
+    require 'date'
+
+    # Get the current date
+    current_date = Date.today
+
+    # Get the first day of the current month
+    first_day_of_month = current_date - (current_date.day - 1)
+
+    # Get the last day of the current month
+    last_day_of_month = (first_day_of_month >> 1) - 1
+
+    # Create an array of day names
+    day_names = %w[Sun Mon Tue Wed Thu Fri Sat]
+
+    # Create an empty array to store the calendar rows
+    calendar_rows = []
+
+    # Create the first row of the calendar with padding for the first day
+    first_week = first_day_of_month.wday.times.map { nil }
+
+    # Fill in the days of the first week
+    first_week += (first_day_of_month..[first_day_of_month + 6, last_day_of_month].min).to_a
+
+    # Add the first week to the calendar rows
+    calendar_rows << first_week
+
+    # Fill in the remaining weeks of the month
+    current_week = first_week
+    loop do
+      # Get the next week
+      current_week = (current_week.last.to_i + 1..[current_week.last.to_i + 7, last_day_of_month.day].min).to_a
+
+      # Add the week to the calendar rows
+      calendar_rows << current_week
+
+      # Break the loop when the last day of the month is reached
+      break if current_week.last.to_i >= last_day_of_month.day
+    end
+
+    # Return the calendar data
+    {
+      month_name: current_date.strftime('%B %Y'),
+      day_names: day_names,
+      rows: calendar_rows
+    }
+  end
+
 
     private
 
