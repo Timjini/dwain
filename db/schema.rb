@@ -183,20 +183,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_052508) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "traninings", force: :cascade do |t|
-    t.date "date"
-    t.string "session_100m_200m"
-    t.string "distance_100m_200m"
-    t.string "session_200m_400m"
-    t.string "distance_200m_400m"
-    t.string "sets_reps"
-    t.string "recovery"
-    t.string "effort"
-    t.string "volume"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

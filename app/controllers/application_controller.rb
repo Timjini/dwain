@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :set_theme
-    before_action :set_active_storage_url_options
+    #before_action :set_active_storage_url_options
 
     # skip CSRF token validation for JSON, JavaScript and XML requests
     protect_from_forgery with: :null_session
@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_active_storage_url_options
-    ActiveStorage::Current.url_options = Rails.application.config.action_controller.default_url_options
-  end
+  # def set_active_storage_url_options
+  #   ActiveStorage::Current.url_options = Rails.application.config.action_controller.default_url_options
+  # end
 
 
   def set_theme
