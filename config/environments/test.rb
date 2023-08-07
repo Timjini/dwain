@@ -52,7 +52,8 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
-    config.active_storage.service = :local
+    config.active_storage.service = :cloudflare
+
 
 
   # Raises error for missing translations.
