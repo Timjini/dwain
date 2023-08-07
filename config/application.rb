@@ -24,7 +24,6 @@ module Dwain
     
     # development 
     # config.action_controller.default_url_options = { host: 'localhost:3000' } 
-
     config.assets.enabled = true
     config.assets.compile = true
 

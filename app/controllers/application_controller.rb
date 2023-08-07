@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     if resource_name == :user
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight, :avatar])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight,:avatar])
     elsif resource_name == :coach
       devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight, :coach_type, :avatar])
       devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :dob, :phone, :username, :first_name, :last_name, :address, :city, :height, :weight, :coach_type ,:avatar])

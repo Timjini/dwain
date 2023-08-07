@@ -1,0 +1,88 @@
+<style>
+
+dt{
+  font-size: 1.25rem;
+}
+dd {
+  font-size: 1rem;
+}
+
+.training-cover{
+  max-height:auto;
+  max-width:30vw;
+  margin:0 auto;
+}
+
+.ts-contrainer{
+  padding:20px;
+}
+</style>
+
+
+
+<div class="sm:p-7 p-4">
+          <a href="/trainings">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </a>
+  <div class=" grid grid-cols-2 gap-4 mt-12">
+                <div class="video-view ">
+                <% if !@training.media.nil?%>
+                <iframe width="800" height="500"
+                  src="<%=@training.media.sub('watch?v=', 'embed/')%>">
+                  </iframe>
+                  <%elsif @training.training_image.present?%>
+                  <%= image_tag @training.training_image, class:"training-cover" %>
+                  <%else%>
+                  <%= image_tag "video_placeholder.jpg" %>
+                <%end%>
+  </div>
+    <div class="col-md-8">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-2"><%=@training.date%></h2>
+          <p style="max-width:400px;margin-top:15px;">
+          
+          </p>
+        <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium ">Session</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              Session 100/ 200m: <%=@training.session_100m_200m%>
+            </dd>
+            <dd class="mt-2 text-sm text-gray-500">
+              Session 200/ 400m: <%=@training.session_200m_400m%>
+            </dd>
+          </div>
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium ">Distance</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              Distance 100/ 200m: <%=@training.distance_100m_200m%>
+            </dd>
+            <dd class="mt-2 text-sm text-gray-500">
+              Distance 200/ 400m : <%=@training.distance_200m_400m%>
+            </dd>
+          </div>
+        </dl>
+        <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium ">Metrics</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              Sets / Reps : <%=@training.sets_reps%>
+            </dd>
+            <dd class="mt-2 text-sm text-gray-500">
+              Volume : <%=@training.volume%>
+            </dd>
+          </div>
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium ">Recovery/Effort</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              Recovery : <%=@training.recovery%>
+            </dd>
+            <dd class="mt-2 text-sm text-gray-500">
+              Effort : <%=@training.effort%>
+            </dd>
+          </div>
+        </dl>
+    </div>
+</div>
+

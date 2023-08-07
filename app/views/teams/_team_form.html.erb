@@ -1,0 +1,15 @@
+<%= form_for @team do |f| %>
+<div class="container">
+  <div class="row p-2">
+    <%= f.text_area :name, placeholder: "Team Name", class: "block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+  </div>
+  <div class="row p-2">
+    <%= f.file_field :logo %>
+    <%= f.hidden_field :coach_id, value: current_coach.id %>
+  </div>
+  <div class="row p-2 mt-auto">
+    <%= f.submit %>
+  </div>
+</div>
+
+<% end %>

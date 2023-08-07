@@ -1,92 +1,52 @@
-<div id="<%= dom_id training_session %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= training_session.name %>
-  </p>
+            <%@training_sessions.each do |ts|%>
+              <tr>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                  <div class="flex items-center">
+                    <svg viewBox="0 0 24 24" class="w-4 mr-5 text-yellow-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <%=ts.name%>
+                  </div>
+                </td>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                  <div class="flex items-center">
+                    <%=ts.training_type%>
+                  </div>
+                </td>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">
+                  <%if ts.coach.present?%>
+                   <%=ts.coach.email %>
+                  <%end%>
+                </td>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-blue-700"><%=ts.day%></td>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                  <div class="flex items-center">
+                    <div class="sm:flex hidden flex-row">
+                      <div class="text-gray-400 text-xs"></div>
+                    <a href="/training_sessions/<%=ts.id%>">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </a>
+                    <a href="/training_sessions/<%=ts.id%>/edit">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                      </svg>
+                    </a>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= training_session.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Coach:</strong>
-    <%= training_session.coach_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Sets:</strong>
-    <%= training_session.sets %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Reps:</strong>
-    <%= training_session.reps %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Distance:</strong>
-    <%= training_session.distance %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Duration:</strong>
-    <%= training_session.duration %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Recovery:</strong>
-    <%= training_session.recovery %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Training type:</strong>
-    <%= training_session.training_type %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Day:</strong>
-    <%= training_session.day %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Rpe:</strong>
-    <%= training_session.rpe %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Initiation:</strong>
-    <%= training_session.initiation %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Footwear:</strong>
-    <%= training_session.footwear %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Surface:</strong>
-    <%= training_session.surface %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Extra info:</strong>
-    <%= training_session.extra_info %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Pacing times:</strong>
-    <%= training_session.pacing_times %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Media:</strong>
-    <%= training_session.media %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this training session", training_session, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this training session', edit_training_session_path(training_session), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+                    </div>
+                    <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
+                      <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+            <%end%>

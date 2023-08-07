@@ -1,0 +1,12 @@
+<% flash.each do |type, message| %>
+  <script>
+    Swal.fire({
+      title: "<%= type.to_s.titleize %>",
+      html: "<%= message.html_safe %>",
+      icon: "<%= type.to_s %>",
+      showConfirmButton: false,
+      timer: 3000
+    });
+    console.log("flash")
+  </script>
+<% end %>

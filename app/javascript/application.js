@@ -2,7 +2,9 @@
 import { Turbo } from "@hotwired/turbo-rails"
 import "controllers"
 import "controllers/hello_controller.js"
-// Turbo.start()
+import "controllers/training_table_controller.js"
+
+Turbo.start()
 
 
-Turbo.session.drive = false
+// Turbo.session.drive = false

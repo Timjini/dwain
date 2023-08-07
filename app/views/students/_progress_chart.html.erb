@@ -1,0 +1,158 @@
+ <style>
+    canvas{
+        max-height:500px;
+        width:auto;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    /* phone view */
+    @media  only screen and (max-width: 600px) {
+        canvas{
+            max-height:300px;
+        }
+}
+
+.row{
+    gap:50px;
+}
+li:hover{
+    opacity:0.8;
+}
+
+ </style>
+ <div class="mx-1 my-2 row p-2">
+    <div class="col-md-5 bg-slate-50 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800 shadow-soft-xl rounded-2xl bg-clip-border ">
+    <h2 class="text-center p-3 display-6 "> My Progress</h2>
+    <turbo-frame id="chart-frame">
+    <canvas id="myRadarChart"></canvas>
+    </turbo-frame>
+    </div>
+    <div class="px-8 col-md-5 bg-slate-50 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800 shadow-soft-xl rounded-2xl bg-clip-border ">
+        <ul role="list" class="divide-y divide-gray-100">
+        <li class="flex justify-between gap-x-6 py-5">
+            <div class="flex gap-x-4">
+            <div class="min-w-0 flex-auto">
+                <p class="text-sm font-semibold leading-6">Technical Drills</p>
+                <p class="mt-1 truncate text-xs leading-5 ">Performance: </p>
+            </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end">
+            <p class="text-sm leading-6 ">200m/400m</p>
+            <p class="mt-1 text-xs leading-5 ">Last training <time datetime="2023-01-23T13:23Z">3h ago</time></p>
+            </div>
+        </li>
+        <li class="flex justify-between gap-x-6 py-5">
+            <div class="flex gap-x-4">
+            <div class="min-w-0 flex-auto">
+                <p class="text-sm font-semibold leading-6 ">Initial Workout</p>
+                <p class="mt-1 truncate text-xs leading-5 ">Performance:</p>
+            </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end">
+            <p class="text-sm leading-6 ">300m/400m</p>
+            <p class="mt-1 text-xs leading-5 ">Last training  <time datetime="2023-01-23T13:23Z">1w ago</time></p>
+            </div>
+        </li>
+        <li class="flex justify-between gap-x-6 py-5">
+            <div class="flex gap-x-4">
+            <div class="min-w-0 flex-auto">
+                <p class="text-sm font-semibold leading-6 ">Strenght Drills</p>
+                <p class="mt-1 truncate text-xs leading-5 ">Performance:</p>
+            </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end">
+            <p class="text-sm leading-6 ">200m/300m</p>
+            <div class="mt-1 flex items-center gap-x-1.5">
+                <div class="flex-none rounded-full bg-emerald-500/20 p-1">
+                <div class="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
+                </div>
+                <p class="text-xs leading-5 ">In Progress</p>
+            </div>
+            </div>
+        </li>
+        <li class="flex justify-between gap-x-6 py-5">
+            <div class="flex gap-x-4">
+            <div class="min-w-0 flex-auto">
+                <p class="text-sm font-semibold leading-6 ">High Intensity Workout</p>
+                <p class="mt-1 truncate text-xs leading-5 ">Performance:</p>
+            </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end">
+            <p class="text-sm leading-6 ">100m/200m</p>
+            <p class="mt-1 text-xs leading-5 ">Last training <time datetime="2023-01-23T13:23Z">4d ago</time></p>
+            </div>
+        </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<script>
+    const param = {
+      labels: [
+        'Eating',
+        'Drinking',
+        'Sleeping',
+        'Designing',
+        'Coding',
+        'Cycling',
+        'Running'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [65, 59, 90, 81, 56, 55, 40],
+        fill: true,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 99, 132)'
+      }, {
+        label: 'My Second Dataset',
+        data: [28, 48, 40, 19, 96, 27, 100],
+        fill: true,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgb(54, 162, 235)',
+        pointBackgroundColor: 'rgb(54, 162, 235)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(54, 162, 235)'
+      }]
+    };
+
+    const config = {
+        type: 'radar',
+        data: param,
+        options: {
+            scales: {
+            r: {
+                 pointLabels: {
+          display: false, // This will hide the radial scale labels (100, 80, 60, etc.)
+        },
+        grid: {
+          display: true // This will hide the circular grid lines
+        } 
+            },
+            },
+            elements: {
+            line: {
+                borderWidth: 3
+            }
+            }
+        },
+        };
+
+     document.addEventListener('turbo:load', function() {
+    // Check if the chart element exists (it might not exist on initial load)
+    var chartElement = document.getElementById('myRadarChart');
+    if (chartElement) {
+      // Create the chart using the configuration
+      var myRadarChart = new Chart(chartElement, config);
+    }
+  });
+
+  </script>
