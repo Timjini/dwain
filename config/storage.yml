@@ -13,14 +13,6 @@ access_key_id: Env['CLOUDFLARE_ACCESS_KEY_ID']
 secret_access_key: Env['CLOUDFLARE_SECRET_ACCESS_KEY']
 region: auto
 bucket: Env['CLOUDFLARE_BUCKET']
-# cloudflare:
-#   service: S3
-#   # account_id: 28afba52e7402b82150c6d7186091120
-#   endpoint: https://28afba52e7402b82150c6d7186091120.r2.cloudflarestorage.com/cfs
-#   access_key_id: 3eb0157035489b1716a03d8aefab6e6e
-#   secret_access_key: 3d6ef002fbd6d53e29d9bb24c6043d711c9ed2992fd3ae8d75e955e9db67ea88
-#   region: auto
-#   bucket: cfs
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
