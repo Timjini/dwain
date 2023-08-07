@@ -49,6 +49,9 @@ gem 'sweetalert2'
 
 gem 'chart-js-rails'
 
+gem "aws-sdk-s3", require: false
+
+
 
 
 

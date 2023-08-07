@@ -19,7 +19,7 @@ class TrainingSession < ApplicationRecord
 
     def training_small 
         if image.attached?
-          image.variant(resize_to_fill: [60, 60]).processed
+          image
             else
           "video_placeholder.jpg"
         end

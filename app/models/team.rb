@@ -6,7 +6,7 @@ class Team < ApplicationRecord
 
   def logo_thumbnail
      if logo.attached?
-      logo.variant(resize_to_fill: [60, 60]).processed
+      logo
         else
       "/assets/user.png"
     end

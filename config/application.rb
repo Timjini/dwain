@@ -20,7 +20,7 @@ module Dwain
     # config.eager_load_paths << Rails.root.join("extras")
 
     # production
-    config.action_controller.default_url_options = { host: 'club.chambersforsport.com' }
+    # config.action_controller.default_url_options = { host: 'club.chambersforsport.com' }
     
     # development 
     # config.action_controller.default_url_options = { host: 'localhost:3000' } 

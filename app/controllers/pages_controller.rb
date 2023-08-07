@@ -11,8 +11,7 @@ class PagesController < ApplicationController
   def login
   end
 
-  def dashboard_coach
-      @constant = "something"
-  end
+  # def dashboard_coach
+  # end
   
 end
