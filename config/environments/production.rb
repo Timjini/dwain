@@ -109,6 +109,8 @@ Rails.application.configure do
 
   # config.action_controller.default_url_options = { host: 'club.chambersforsport.com' }
 
+  action.active_storage.service = :cloudflare
+
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
