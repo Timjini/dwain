@@ -53,6 +53,8 @@ gem "aws-sdk-s3", require: false
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
+gem 'carrierwave-cloudflare'
+
 
 
 

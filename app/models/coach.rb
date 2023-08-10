@@ -27,7 +27,7 @@ class Coach < ApplicationRecord
 
   def avatar_profile 
     if avatar.attached?
-      avatar
+      avatar.variant(resize: "150x150!").processed
         else
       "/assets/user.png"
     end
