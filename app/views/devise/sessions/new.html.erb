@@ -65,6 +65,10 @@
 
 
 </style>
+
+<%url = request.original_url.gsub("/sign_in", "")%>
+
+
 <% render 'devise/shared/error_messages' %>
 <div class="h-screen md:flex">
 	<div
@@ -72,7 +76,9 @@
 		<div>
 			<h1 class="text-white font-bold text-4xl font-sans">Chamber For Sport</h1>
 			<p class="text-white mt-1">Let’s Start The Race.</p>
-			<button type="submit" class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"></button>
+			<a type="submit" class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2 text-center text-red-700" href="<%=url%>/sign_up">
+				Sign Up
+			</a>
 		</div>
 		<div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
 		<div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
@@ -106,7 +112,7 @@
 								<%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-muted", id: "password-field" %>
 							<i class="toggle-password far fa-eye" onclick="togglePasswordVisibility()"></i>
       					</div>
-						<div class="flex items-center ml-5 px-3 rounded-2xl ">
+						<div class="flex items-center px-3 pt-4 pb-1 rounded-2xl ">
 							<%= f.submit "Log in", class:"block w-full bg-red-700 mt-4 py-2 rounded-2xl  text-white font-semibold mb-2" %>
 						</div>
                <% if devise_mapping.rememberable? %>

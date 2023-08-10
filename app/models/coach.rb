@@ -9,7 +9,7 @@ class Coach < ApplicationRecord
 
   def avatar_thumbnail
     if avatar.attached?
-      avatar.variant(resize_to_fill: [60, 60]).processed
+      avatar
         else
       "/assets/user.png"
     end

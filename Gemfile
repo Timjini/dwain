@@ -49,6 +49,12 @@ gem 'sweetalert2'
 
 gem 'chart-js-rails'
 
+gem "aws-sdk-s3", require: false
+
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+
+
+
 
 
 

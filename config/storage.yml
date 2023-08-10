@@ -8,11 +8,19 @@
 
 # cloudflare:
 # service: S3
-# endpoint: https://<%= Rails.application.credentials.dig(:cloudflare, :account_id) %>.r2.cloudflarestorage.com
-# access_key_id: <%= Rails.application.credentials.dig(:cloudflare, :access_key_id) %>
-# secret_access_key: <%= Rails.application.credentials.dig(:cloudflare, :secret_access_key) %>
+# endpoint: https://28afba52e7402b82150c6d7186091120.r2.cloudflarestorage.com
+# access_key_id: bc6884a13fd21a529605b6c7a8c4b454
+# secret_access_key: 1a2f0d62affcb1350bc56935850903af9663887f201808fca8e5761f27558202
 # region: auto
-# bucket: <%= Rails.application.credentials.dig(:cloudflare, :bucket) %>
+# bucket: chambersforsport
+
+cloudflare:
+  service: S3
+  endpoint: <%= "https://#{ENV['CLOUDFLARE_ACCOUNT_ID']}.r2.cloudflarestorage.com" %>
+  access_key_id: <%= ENV['CLOUDFLARE_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['CLOUDFLARE_SECRET_ACCESS_KEY'] %>
+  region: auto
+  bucket: <%= ENV['CLOUDFLARE_BUCKET'] %>
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
@@ -21,13 +29,13 @@
 #   region: us-east-1
 #   bucket: your_own_bucket-<%= Rails.env %>
 
-cloudflare:
-service: S3
-endpoint: Env['CLOUDFLARE_ENDPOINT']
-access_key_id: Env['CLOUDFLARE_ACCESS_KEY_ID']
-secret_access_key: Env['CLOUDFLARE_SECRET_ACCESS_KEY']
-region: auto
-bucket: Env['CLOUDFLARE_BUCKET']
+# cloudflare:
+# service: S3
+# endpoint: Env['CLOUDFLARE_ENDPOINT']
+# access_key_id: Env['CLOUDFLARE_ACCESS_KEY_ID']
+# secret_access_key: Env['CLOUDFLARE_SECRET_ACCESS_KEY']
+# region: auto
+# bucket: Env['CLOUDFLARE_BUCKET']
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
