@@ -22,6 +22,12 @@
    width:auto;
   }
 
+  .img-circle{
+      border-radius: 50%;
+      height: 150px;
+      width: 150px;
+  }
+
 </style>
 
 
@@ -32,7 +38,7 @@
    <div class="flex flex-wrap -mx-3">
       <div class="flex-none w-auto max-w-full px-3">
          <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-            <%= image_tag (current_coach.avatar_thumbnail) , class:"w-full shadow-soft-sm rounded-xl"%>
+            <%= image_tag (current_coach.avatar_thumbnail) , class:"w-full shadow-soft-sm rounded-xl img-circle"%>
          </div>
       </div>
       <div class="flex-none w-auto max-w-full px-3 my-auto">

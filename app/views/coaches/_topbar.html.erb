@@ -38,6 +38,12 @@ svg{
   }
 }
 
+.user-image{
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+}
+
 </style>
 
 <% current_path = request.path 
@@ -65,7 +71,7 @@ svg{
          </div>
          <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full avatar-div">
             <li class="flex items-center">
-               <%= image_tag(current_coach.avatar_thumbnail, class:"w-10 mr-8 rounded-full")%>
+               <%= image_tag(current_coach.avatar_thumbnail, class:"w-10 mr-8 rounded-full user-image")%>
             </li>
             <li class="flex items-center pl-4" onclick="toggleDropdown('mobile-dropdown')">
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
