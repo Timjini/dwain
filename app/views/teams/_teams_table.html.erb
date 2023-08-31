@@ -45,7 +45,7 @@
           <table class="w-full text-left">
             <thead>
               <tr class="text-gray-400">
-                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800"> Team Id </th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 hidden"> Team Id </th>
                 <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Logo</th>
                 <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Team Name</th>
                 <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 hidden md:table-cell">Memebrs</th>
@@ -54,9 +54,9 @@
             <tbody class="text-gray-600 dark:text-gray-100">
               <% @teams.each do |s| %>
               <tr>
-                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                <td class="hidden sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
                   <div class="flex items-center">
-                    <div class="w-10 h-10 flex-shrink-0 mr-3 sm:mr-2">
+                    <div class="w-2 h-10 flex-shrink-0 mr-3 sm:mr-2">
                         <%=s.id%>
                     </div>
                   </div>
