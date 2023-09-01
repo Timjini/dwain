@@ -4,7 +4,7 @@ class TrainingSessionsController < ApplicationController
 
   # GET /training_sessions or /training_sessions.json
   def index
-      @training_sessions = TrainingSession.includes(:coach).all
+      @training_sessions = TrainingSession.includes(:coach).paginate(page: params[:page], per_page: 10)
 
 
        respond_to do |format|

@@ -55,6 +55,9 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 gem 'carrierwave-cloudflare'
 
+gem 'will_paginate'
+
+
 
 
 

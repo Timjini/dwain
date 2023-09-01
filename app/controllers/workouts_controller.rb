@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
 
     def index
-        @workouts = Workout.includes(:coach).all
+        @workouts = Workout.includes(:coach).paginate(page: params[:page], per_page: 10)
     end
 
     def gallery
