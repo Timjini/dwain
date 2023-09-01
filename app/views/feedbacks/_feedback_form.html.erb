@@ -1,0 +1,38 @@
+<%
+    @feedback = Feedback.new
+%>
+
+<%= form_for @feedback do |f| %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %>
+
+  <%= f.label :coach_id %>
+  <%= f.text_field :coach_id %>
+
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
+
+  <%= f.fields_for :student_performance do |sp| %>
+    <%= sp.label :speed %>
+    <%= sp.number_field :speed, min: 0, max: 100 %>
+    <%= sp.label :endurance %>
+    <%= sp.number_field :endurance, min: 0, max: 100 %>
+    <%= sp.label :technique %>
+    <%= sp.number_field :technique, min: 0, max: 100 %>
+    <%= sp.label :consistency %>
+    <%= sp.number_field :consistency, min: 0, max: 100 %>
+    <%= sp.label :race_strategy %>
+    <%= sp.number_field :race_strategy, min: 0, max: 100 %>
+    <%= sp.label :mental_status %>
+    <%= sp.number_field :mental_status, min: 0, max: 100 %>
+    <%= sp.label :physical_status %>
+    <%= sp.number_field :physical_status, min: 0, max: 100 %>
+
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
+

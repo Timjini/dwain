@@ -65,7 +65,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :feedbacks , only: %i[index show show show edit destroy]
+  resources :feedbacks , only: %i[index show edit destroy create new]
 
   #contact form
   resources :contacts, only: [:new, :create, :index]
