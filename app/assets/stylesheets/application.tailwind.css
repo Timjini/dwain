@@ -2,7 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-h6 {
-    background-color: brown;
-    padding:20px;
-}
