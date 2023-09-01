@@ -16,8 +16,8 @@ dd {
               <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </a>
-  <div class="items-center p-5 flex flex-row flex-wrap">
-            <div class="video-view p-5">
+  <div class="items-center p-1 flex flex-row flex-wrap">
+            <div class="video-view pl-4">
               <% if @workout.video_url.present?%>
               <video width="800" height="800" controls>
                 <source src="<%=@workout.video_url%>" type="video/mp4">
@@ -38,7 +38,7 @@ dd {
         <%=@workout.description.html_safe%>
         <%end%>
         </p>
-      <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+      <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-8 lg:gap-x-8">
         <div class="border-t border-gray-200 pt-4">
           <dt class="font-medium ">Metrics</dt>
           <dd class="mt-2 text-sm text-gray-500">

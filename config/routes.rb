@@ -1,20 +1,10 @@
 Rails.application.routes.draw do
-  resources :training_sessions , only: %i[index show create update destroy new edit] do 
-    collection  do
-      post :bulk_create
-    end
-  end
-
-  resources :trainings , only: %i[index show create update destroy new edit] do 
-    collection  do
-      post :bulk_create
-    end
-  end
+ 
 #  devise_for :coaches, controllers: { sessions: 'devise/sessions' }
-
   devise_for :users
   devise_for :coaches
 
+  # User routes
   resources :users , only: %i[index show create update destroy new edit] do
           collection do
             get 'dashboard_student'
@@ -25,8 +15,7 @@ Rails.application.routes.draw do
   get 'goals_rewards_achievements' , to: 'students#goals_rewards_achievements'
 
 
-  resources :coaches, only: [:index, :show, :edit, :update]
-  # resources :teams, only: [:index, :show, :edit, :update, :create, :new]
+  resources :teams, only: [:index, :show, :edit, :update, :create, :new]
   resources :student_workouts, only: [:index, :show, :edit, :update, :create, :new]
   
   # Root path for coaches
@@ -35,6 +24,7 @@ Rails.application.routes.draw do
     get 'coaches/:id', to: 'coaches#show' ,  constraints: { id: /\d+/ }
   end
 
+  resources :coaches, only: [:index, :show, :edit, :update]
   # Coach User Routes 
   get '/my_profile', to: 'coaches#profile'
   # get '/teams', to: 'coaches#teams'
@@ -62,6 +52,20 @@ Rails.application.routes.draw do
       resources :individual_sessions
     end
   end
+
+   resources :training_sessions , only: %i[index show create update destroy new edit] do 
+    collection  do
+      post :bulk_create
+    end
+  end
+
+  resources :trainings , only: %i[index show create update destroy new edit] do 
+    collection  do
+      post :bulk_create
+    end
+  end
+
+  resources :feedbacks , only: %i[index show show show edit destroy]
 
   #contact form
   resources :contacts, only: [:new, :create, :index]
