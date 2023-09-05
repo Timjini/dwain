@@ -49,6 +49,7 @@ class StudentsController < ApplicationController
     end
 
     def goals_rewards_achievements
+        @coach_feedback = Feedback.where(user_id: current_user.id).last
     end
 
 
