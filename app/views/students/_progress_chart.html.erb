@@ -22,6 +22,7 @@ li:hover{
 }
 
  </style>
+
  <div class="mx-1 my-2 row p-2">
     <div class="col-md-5 bg-slate-50 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800 shadow-soft-xl rounded-2xl bg-clip-border ">
     <h2 class="text-center p-3 display-6 "> My Progress</h2>
@@ -93,17 +94,29 @@ li:hover{
 <script>
     const param = {
       labels: [
-        'Eating',
-        'Drinking',
-        'Sleeping',
-        'Designing',
-        'Coding',
-        'Cycling',
-        'Running'
+        'Speed',
+        'Endurance',
+        'Technique',
+        'Consistency',
+        'Mental',
+        'Strategy',
+        'Attitude'
       ],
       datasets: [{
-        label: 'My First Dataset',
-        data: [65, 59, 90, 81, 56, 55, 40],
+        label: 'Last Performance',
+        data: [
+            <% if @coach_feedback.present?%>
+            <%=@coach_feedback.student_performance['speed'].to_i%>,
+            <%=@coach_feedback.student_performance['endurance'].to_i%>,
+            <%=@coach_feedback.student_performance['technique'].to_i%>,
+            <%=@coach_feedback.student_performance['consistency'].to_i%>,
+            <%=@coach_feedback.student_performance['mental_status'].to_i%>,
+            <%=@coach_feedback.student_performance['race_strategy'].to_i%>,
+            <%=@coach_feedback.student_performance['attitude'].to_i%>
+            <%else%>
+            28, 48, 40, 19, 96, 27, 100
+            <%end%>
+            ],
         fill: true,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgb(255, 99, 132)',
@@ -112,8 +125,20 @@ li:hover{
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgb(255, 99, 132)'
       }, {
-        label: 'My Second Dataset',
-        data: [28, 48, 40, 19, 96, 27, 100],
+        label: 'Best Performances',
+        data: [
+             <% if @best_values.present?%>
+            <%=@best_values[:speed]%>,
+            <%=@best_values[:endurance]%>,
+            <%=@best_values[:technique]%>,
+            <%=@best_values[:consistency]%>,
+            <%=@best_values[:mental_status]%>,
+            <%=@best_values[:race_strategy]%>,
+            <%=@best_values[:attitude]%>
+            <%else%>
+            99, 12, 50, 19, 17, 44, 100
+            <%end%>
+        ],
         fill: true,
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgb(54, 162, 235)',
