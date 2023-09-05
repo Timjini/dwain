@@ -24,15 +24,18 @@
       <table class="w-full">
         <thead>
           <tr>
+          <%if @days_with_trainings.present?%>
             <% @days_with_trainings.first(7).each do |day| %>
               <th class="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs">
                 <span class="xl:block lg:block md:block sm:block hidden"><%= day[:date].strftime("%A") %></span>
                 <span class="xl:hidden lg:hidden md:hidden sm:hidden block"><%= day[:date].strftime("%a") %></span>
               </th>
             <% end %>
+          <%end%>
           </tr>
         </thead>
         <tbody>
+        <%if @days_with_trainings.present?%>
           <% @days_with_trainings.each_slice(7) do |week| %>
             <tr class="text-center h-20">
               <% week.each do |day| %>
@@ -56,6 +59,7 @@
               <% end %>
             </tr>
           <% end %>
+        <%end%>
         </tbody>
 
       </table>
