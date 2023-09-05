@@ -57,6 +57,9 @@ gem 'carrierwave-cloudflare'
 
 gem 'will_paginate'
 
+gem 'ransack'
+gem 'kaminari'
+
 
 
 

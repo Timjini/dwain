@@ -5,6 +5,7 @@ class FeedbacksController < ApplicationController
         @feedbacks = Feedback.all
 
         @users = User.paginate(page: params[:page], per_page: 10) # Change per_page to your desired number of items per page
+
     end
 
     def new
@@ -15,11 +16,12 @@ class FeedbacksController < ApplicationController
         @feedback = Feedback.new(feedback_params)
 
         if @feedback.save
-            redirect_to @feedback, notice: 'Feedback was successfully created.'
+            redirect_to '/feedbacks', notice: 'Feedback was successfully created'
         else
             render :new
         end
     end
+
 
      def feedbacks
         @feedback = Feedback.new(feedback_params)

@@ -12,6 +12,14 @@ class User < ApplicationRecord
 
   has_one :subscription
 
+  def self.ransackable_attributes(auth_object = nil)
+    ['first_name', 'last_name', 'username', 'email'] # Specify the attributes you want to make searchable
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    [] # You can also specify associations to make searchable if needed
+  end
+
   def age
     now = Time.now.utc.to_date
     if dob.nil?
