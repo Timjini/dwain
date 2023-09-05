@@ -11,6 +11,8 @@ class TrainingsController < ApplicationController
         trainings_by_date[date] << training
         end
 
+        @current_month_name = Time.now.strftime('%B')
+
         current_month = Time.now.strftime('%m')
         current_year = Time.now.strftime('%Y') # Use %Y to get the full year
 
