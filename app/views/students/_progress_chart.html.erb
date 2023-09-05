@@ -22,6 +22,7 @@ li:hover{
 }
 
  </style>
+
  <div class="mx-1 my-2 row p-2">
     <div class="col-md-5 bg-slate-50 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800 shadow-soft-xl rounded-2xl bg-clip-border ">
     <h2 class="text-center p-3 display-6 "> My Progress</h2>
@@ -124,16 +125,16 @@ li:hover{
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgb(255, 99, 132)'
       }, {
-        label: 'Best Performance',
+        label: 'Best Performances',
         data: [
-             <% if @coach_feedback.present?%>
-            <%=@coach_feedback.student_performance['speed'].to_i%>,
-            <%=@coach_feedback.student_performance['endurance'].to_i%>,
-            <%=@coach_feedback.student_performance['technique'].to_i%>,
-            <%=@coach_feedback.student_performance['consistency'].to_i%>,
-            <%=@coach_feedback.student_performance['mental_status'].to_i%>,
-            <%=@coach_feedback.student_performance['race_strategy'].to_i%>,
-            <%=@coach_feedback.student_performance['attitude'].to_i%>
+             <% if @best_values.present?%>
+            <%=@best_values[:speed]%>,
+            <%=@best_values[:endurance]%>,
+            <%=@best_values[:technique]%>,
+            <%=@best_values[:consistency]%>,
+            <%=@best_values[:mental_status]%>,
+            <%=@best_values[:race_strategy]%>,
+            <%=@best_values[:attitude]%>
             <%else%>
             99, 12, 50, 19, 17, 44, 100
             <%end%>
