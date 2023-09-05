@@ -51,6 +51,7 @@ class StudentsController < ApplicationController
     def goals_rewards_achievements
         @coach_feedback = Feedback.where(user_id: current_user.id).last
 
+
         feedbacks = Feedback.where(user_id: current_user.id)
 
             # Initialize a hash to store the best values for each attribute
@@ -84,6 +85,8 @@ class StudentsController < ApplicationController
             @best_values[:race_strategy] = [race_strategy, @best_values[:race_strategy]].compact.max
             @best_values[:attitude] = [attitude, @best_values[:attitude]].compact.max
             end
+
+        
 
     end
 

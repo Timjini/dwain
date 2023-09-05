@@ -1,4 +1,4 @@
-class FeedbackSerializer < ActionModel::Serializer
+class FeedbackSerializer < ActiveModel::Serializer
     attributes :id , :user , :rating , :created_at , :updated_at, :student_performance, :coach_id
 
 
