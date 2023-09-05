@@ -115,9 +115,9 @@ before:inline-block before:w-6 before:h-6 before: checked:before:bg-blue-200 bef
                   <li class="relative block px-0 py-2  border-0 rounded-t-lg text-inherit">
                   <span > Upload Training CSV </span>
                   <%= form_with(url: bulk_create_trainings_path, local: true, method: :post, multipart: true) do |form| %>
-  <%= form.file_field :file, accept: '.csv' %>
-  <%= form.submit 'Confirm', class:"inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500" %>
-<% end %>
+                  <%= form.file_field :file, accept: '.csv' %>
+                  <%= form.submit 'Confirm', class:"inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500" %>
+                  <% end %>
                   </li>
                </ul>
             </div>

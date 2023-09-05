@@ -2,7 +2,31 @@ class TrainingsController < ApplicationController
     require 'csv'
 
     def index
-        @trainings = Training.paginate(page: params[:page], per_page: 10)
+        @trainings = Training.all
+        trainings_by_date = Hash.new { |hash, key| hash[key] = [] }
+
+        # Group training data by date
+        @trainings.each do |training|
+        date = training.updated_at.to_date
+        trainings_by_date[date] << training
+        end
+
+        current_month = Time.now.strftime('%m')
+        current_year = Time.now.strftime('%Y') # Use %Y to get the full year
+
+        first_day = Date.new(current_year.to_i, current_month.to_i, 1)
+        last_day = Date.new(current_year.to_i, current_month.to_i, -1)
+
+        @days = (first_day..last_day).to_a
+
+        # Create a new array to store date and associated training data
+        @days_with_trainings = []
+
+        @days.each do |day|
+        day_with_trainings = { date: day, trainings: trainings_by_date[day] || [] }
+        @days_with_trainings << day_with_trainings
+        end
+
     end
 
     def show

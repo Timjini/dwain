@@ -2,6 +2,9 @@
 .confirm-btn:hover{
   opacity: 0.8;
 }
+
+
+
 </style>
 <%if current_coach.present?%>
 <div class="sm:p-7 p-4">
@@ -92,6 +95,12 @@
           </div>
         </div>
 <%else%>
+
+<div class="workout-background">
+  <div class="workout-overlay"></div>
+  <h1 class="workout-title">Workouts</h1>
+</div>
+
     <section class="pt-5">
         <div class="container pt-5">
             <div class="row p-2">
