@@ -46,14 +46,16 @@
                     <div class="top h-5 w-full">
                       <span class=""><%= day[:date].strftime('%d') %></span>
                     </div>
-                    <% if day[:trainings].present? %>
-                      <div class="event bg-purple-400 text-white rounded p-1 text-sm mb-1">
-                        <span class="event-name">
-                        <% day[:trainings].each do |training| %>
+                    <% if @training_table.present? %>
+                        <% @training_table.each do |training| %>
+                          <% if training.date == day[:date]%>
+                           <div class="event bg-purple-400 text-white rounded p-1 text-sm mb-1">
+                             <span class="event-name">
                           <%= training.session_100m_200m %> 
+                              </span>
+                          </div>
+                          <%end%>
                         <% end %>
-                        </span>
-                      </div>
                     <%end%>
                     <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer"></div>
                   </div>
