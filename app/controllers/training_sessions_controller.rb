@@ -6,11 +6,6 @@ class TrainingSessionsController < ApplicationController
   def index
       @training_sessions = TrainingSession.includes(:coach).paginate(page: params[:page], per_page: 10)
 
-
-       respond_to do |format|
-      format.html # Regular HTML response for non-Turbo Stream requests
-      format.turbo_stream # Turbo Stream response
-    end
   end
 
   # GET /training_sessions/1 or /training_sessions/1.json
