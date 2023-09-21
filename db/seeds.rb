@@ -11,6 +11,26 @@
    # seed.rb
 
 # seed.rb
+20.times do |n|
+   dob = nil
+  while dob.nil?
+    generated_dob = Faker::Date.birthday(min_age: 12, max_age: 65)
+    dob = generated_dob if generated_dob <= 12.years.ago && generated_dob >= 65.years.ago
+  end
+    Athlete.create!(
+      email: Faker::Internet.email,
+      dob: Faker::Date.birthday(min_age: 12, max_age: 65),
+      phone: Faker::PhoneNumber.phone_number,
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      address: Faker::Address.street_address,
+      height: Faker::Number.between(from: 150, to: 200),
+      weight: Faker::Number.between(from: 50, to: 100),
+      level: Faker::Number.between(from: 0,to: 2),
+      school_name: Faker::University.name,
+    )
+  end
+
 
 # Create 20 users
 20.times do |n|
