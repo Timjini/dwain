@@ -1,85 +1,80 @@
-<a href="/">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-</a>
+<section class="container mt-24">
 
-<h1>Edit Athlete</h1>
+  <%= form_with(model: @athlete, local: true) do |form| %>
 
-<%= form_with(model: @athlete, local: true) do |form| %>
-  <% if @athlete.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
+      <section>
+        <div class="classy bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600"></div>
+        <div style="display:flex;flex-direction:row;align-items:center;padding:50px;">
+            <a href="/athletes/<%=@athlete.id%>" class="mx-5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 white dark:white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </a>
+            <h1 class="font-bold text-3xl">Edit Athlete Information</h1>
+        </div>
+      </section>
+      <section>
+        <div class="container w-form p-5 mt-5">
+        <div class="row mb-5">
+            <div class="col-md-3 p-2">
+              <label class=" text-gray-900 dark:text-white">Full name</label>
+              <%= form.text_field :athlete_full_name, placeholder: "Full Name", class: "block w-full rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>          </div>
+            <div class="col-md-3 p-2">
+              <label class=" text-gray-900 dark:text-white">Email</label>
+              <%= form.email_field :email, placeholder:"email@example.com", class:"block w-full rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"%>
+            </div>
+            <div class="col-md-3 p-2">
+              <label class=" text-gray-900 dark:text-white">Phone</label>
+              <%= form.text_field :phone, placeholder:"+44", class:"block w-full rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"%>
+            </div>
+            <div class="col-md-3 p-2">
+              <label class=" text-gray-900 dark:text-white">Upload A Image</label>
+              <%= form.file_field :image, class:"block w-full rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-3">
+              <label class=" text-gray-900 dark:text-white">Date of birth</label>
+              <%= form.date_field :dob,  class:"block w-full rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+            </div>
+            <div class="col-md-2">
+              <label class=" text-gray-900 dark:text-white">Height</label>
+              <%= form.text_field :height , class:"block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+            </div>
+            <div class="col-md-2">
+              <label class=" text-gray-900 dark:text-white">Weigh</label>
+              <%= form.text_field :weight , class:"block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+            </div>
+            <div class="col-md-2">
+              <label class=" text-gray-900 dark:text-white">Level</label>
+             <%= form.select :level, Athlete.levels %>
 
-      <ul>
-        <% @athlete.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
- <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :dob %>
-    <%= form.date_field :dob %>
-  </div>
+            </div>
+            <div class="col-md-2">
+              <label class=" text-gray-900 dark:text-white">Power of 10</label>
+              <%= form.text_field :power_of_ten , class:"block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-3 p-2">
+              <label class=" text-gray-900 dark:text-white">Home Address</label>
+                <%= form.text_area :address, class:"description block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", placeholder:"A rich text about the workout" %>
+            </div>
+            <div class="col-md-4">
+              <label class=" text-gray-900 dark:text-white">School Name</label>
+              <%= form.text_field :school_name , class:"block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+            
+            </div>
+            <div class="col-md-5 mt-5 text-end">
+              <%= form.submit "Update info", class: "confirm-btn bg-gradient-to-r from-red-500 to-red-800 text-white font-bold py-3 px-4 rounded", style: "transition: background-color 0.3s;" %>
+              <a href="/training_sessions" class=" cancel-btn bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r text-white font-bold py-3 px-4 rounded">Cancel</a>
+            </div>
+        </div>
+      </section>
+  <%end%>
 
-  <div class="field">
-    <%= form.label :height %>
-    <%= form.text_field :height %>
-  </div>
-
-  <div class="field">
-    <%= form.label :weight %>
-    <%= form.text_field :weight %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :school_name %>
-    <%= form.text_field :school_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :power_of_ten %>
-    <%= form.text_field :power_of_ten %>
-  </div>
-
-  <div class="field">
-    <%= form.label :level %>
-      <%= form.select :level, Athlete.levels.keys %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Update Athlete" %>
-  </div>
-<% end %>
+</section>

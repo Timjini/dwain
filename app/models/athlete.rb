@@ -1,10 +1,11 @@
 class Athlete < ApplicationRecord
     belongs_to :user , optional: true
+
     enum level: {
-    development: 0,
-    intermediate: 1,
-    advanced: 2
-  } 
+    "development" => 0,
+    "intermediate" => 1,
+    "advanced" => 2
+  }
 
    has_one_attached :image
 
@@ -39,5 +40,11 @@ class Athlete < ApplicationRecord
 
   def athlete_full_name
     "#{first_name} #{last_name}"
+  end
+
+  def full_name=(name)
+    parts = name.split(" ", 2)
+    self.first_name = parts[0]
+    self.last_name = parts[1]
   end
 end
