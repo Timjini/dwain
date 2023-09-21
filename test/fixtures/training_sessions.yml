@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  coach_id: 1
+  sets: 1
+  reps: 1
+  distance: MyString
+  duration: MyString
+  recovery: MyString
+  training_type: MyString
+  day: MyString
+  rpe: MyString
+  initiation: MyString
+  footwear: MyString
+  surface: MyString
+  extra_info: MyString
+  pacing_times: MyString
+  media: MyString
+
+two:
+  name: MyString
+  description: MyString
+  coach_id: 1
+  sets: 1
+  reps: 1
+  distance: MyString
+  duration: MyString
+  recovery: MyString
+  training_type: MyString
+  day: MyString
+  rpe: MyString
+  initiation: MyString
+  footwear: MyString
+  surface: MyString
+  extra_info: MyString
+  pacing_times: MyString
+  media: MyString

@@ -1,0 +1,73 @@
+.img-circle{
+    border-radius: 50% !important;
+    height: 150px !important;
+    width: 150px!important;
+    object-fit: cover !important;
+}
+
+
+.pagination a,
+.pagination em,
+.pagination span {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 0.2rem;
+  height: 2rem; /* h-8 */
+  min-width: 2rem; /* w-8 */
+  justify-content: center;
+  color: #718096; /* text-gray-500 */
+  border-radius: 0.375rem; /* rounded-md */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* shadow */
+  border: 1px solid rgba(67, 90, 111, 0.14); /* dark:border-gray-800 */
+  overflow: hidden; /* Add this line to prevent text overflow */
+}
+
+
+  .pagination a:hover {
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+  .pagination span:hover {
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+  .pagination em:hover {
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+
+  .pagination em{
+    background-color : #e5e5e5;
+  }
+
+  .workout-background {
+    background-image: url('https://images.unsplash.com/photo-1502904550040-7534597429ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
+    background-position-y: 250%;
+    min-height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center; 
+    position: relative;
+  }
+  
+  .workout-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: 1; /* Ensure the overlay appears on top of the background image */
+  }
+  
+  .workout-title {
+    position: relative; /* Ensure the title appears on top of the overlay */
+    z-index: 2; /* Place the title above the overlay */
+    color: white; /* Set the text color to white or any desired color */
+    font-size: 4rem;
+  }

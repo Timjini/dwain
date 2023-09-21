@@ -39,6 +39,33 @@ gem 'rack-cors'
 
 gem 'devise'
 
+gem 'active_model_serializers'
+
+gem 'image_processing', '~> 1.2'
+
+gem 'faker'
+
+gem 'sweetalert2'
+
+gem 'chart-js-rails'
+
+gem "aws-sdk-s3", require: false
+
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+
+gem 'carrierwave-cloudflare'
+
+gem 'will_paginate'
+
+gem 'ransack'
+gem 'kaminari'
+
+
+
+
+
+
+
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

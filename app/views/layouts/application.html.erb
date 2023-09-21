@@ -1,22 +1,71 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dwain</title>
+    <title>Chambers for Sport</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <!--====== Bootstrap js ======-->
-    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <!--====== Bootstrap js ======-->   
+   <%= stylesheet_link_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/3mk5o23hkyrskem3znmtueksqvwmq3muu10fw1m90uiwvuru/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js?v=1"></script>
+
+     <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <%= javascript_importmap_tags %>
+    <% content_for :head do %>
+      <%= javascript_import_module_tag "controllers" %> 
+    <% end %>
     <%= favicon_link_tag 'favicon.ico' %>
+    <script>
+      tinymce.init({
+        selector: '.tinymce',
+        plugins: 'lists link image table code help wordcount'
+      });
+    </script>
   </head>
 
     <body class="">
-      <main class="">
-        <%= yield %>
-      </main>
-    </body>
+          <%= render 'shared/flash_messages' %> <!-- Add this line to render flash messages -->
+  <main class="">
+    <% if coach_signed_in? %>
+      <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
+        <%= render 'coaches/sidebar' %>
+        <div class="flex-grow overflow-hidden h-full flex flex-col">
+          <%= render 'coaches/topbar' %>
+          <div class="flex-grow overflow-auto">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    <% elsif user_signed_in? %>
+       <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
+        <%= render 'students/sidebar' %>
+        <div class="flex-grow overflow-hidden h-full flex flex-col">
+          <%= render 'students/topbar' %>
+          <div class="flex-grow overflow-auto">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </main>
+</body>
+
+
 </html>

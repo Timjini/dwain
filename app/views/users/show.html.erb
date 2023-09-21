@@ -1,0 +1,5 @@
+<% if current_user %>
+  <h1><%= current_user.email %></h1>
+<% else %>
+  <p>User not logged in.</p>
+<% end %>

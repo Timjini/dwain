@@ -1,0 +1,11 @@
+<div class="flex-grow flex overflow-x-hidden">
+                <%=render 'coaches/coaches'%>
+                <div class="flex-grow dark:bg-gray-900 overflow-y-auto">
+                  <div class="sm:px-7 sm:pt-7 px-4 pt-4 flex flex-col w-full border-b border-gray-200 dark:bg-gray-900 dark:text-white dark:border-gray-800 sticky top-0">
+                  <%=render 'coaches/coachdata'%>
+                    <div class="flex items-center space-x-3 sm:mt-7 mt-4">
+                      <a href="#" class="px-3 border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white pb-1.5">Teams</a>
+                    </div>
+                  </div>
+                  <%= render 'teams/teams_table'%>
+</div>

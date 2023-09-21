@@ -1,0 +1,20 @@
+<% flash.each do |type, message| %>
+ <script>
+    var iconMapping = {
+      alert: "warning", // Map "alert" to "warning" icon
+      notice: "info", // Map "notice" to "info" icon (optional, add as needed)
+      success: "success",
+      error: "error"
+    };
+
+    Swal.fire({
+      icon: iconMapping["<%= type.to_s %>"], // Use the mapped icon name
+      title: "<%= type.to_s.titleize %>",
+      html: "<%= message.html_safe %>",
+      showConfirmButton: false,
+      timer: 3000
+    });
+    console.log(iconMapping["<%= type.to_s %>"])
+    console.log("<%= message.html_safe %>")
+  </script>
+<% end %>

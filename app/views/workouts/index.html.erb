@@ -1,0 +1,134 @@
+<style>
+.confirm-btn:hover{
+  opacity: 0.8;
+}
+
+
+
+</style>
+<%if current_coach.present?%>
+<div class="sm:p-7 p-4">
+          <div class="flex w-full items-center mb-7">
+            <%if current_coach.present? && current_coach.is_admin?%>
+            <a href="/workouts/new"class="inline-flex items-center h-8 pl-2.5 pr-2 ml-4 confirm-btn bg-gradient-to-r from-red-500 to-red-800 text-white font-bold py-3 px-4 rounded">
+               New Workout
+            </a>
+            <%end%>
+            <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
+              <span class="mr-3">
+                Page <%= @workouts.current_page %> of <%= @workouts.total_pages %>
+              </span>
+            </div>
+          </div>
+          <table class="w-full text-left">
+            <thead>
+              <tr class="text-gray-400">
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Title</th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Video Link</th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 hidden md:table-cell">Coach</th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Date</th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 sm:text-gray-400 ">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-600 dark:text-gray-100">
+          <%@workouts.each do |w|%>
+              <tr>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                  <div class="flex items-center">
+                    <svg viewBox="0 0 24 24" class="w-4 mr-5 text-yellow-500" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <%=w.title%>
+                  </div>
+                </td>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                  <div class="flex items-center">
+                  <a href=" <%=w.video_link%>" target="_blank">
+                    Watch the Video
+                  </a>
+                  </div>
+                </td>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 md:table-cell hidden">
+                  <%if w.coach.present?%>
+                   <%=w.coach.email %>
+                  <%end%>
+                </td>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800 text-blue-700"><%=w.release_date%></td>
+                <td class="sm:p-3 py-2 px-1 border-b border-gray-200 dark:border-gray-800">
+                  <div class="flex items-center">
+                    <div class="sm:flex hidden flex-row">
+                      <div class="text-gray-400 text-xs"></div>
+                    <a href="/workouts/<%=w.id%>">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </a>
+                    <%if current_coach.present? && current_coach.is_admin?%>
+                    <a href="/workouts/<%=w.id%>/edit">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                      </svg>
+                    </a>
+                    <%end%>
+
+                    </div>
+                    <button class="w-8 h-8 inline-flex items-center justify-center text-gray-400 ml-auto">
+                      <svg viewBox="0 0 24 24" class="w-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+            <%end%>
+                
+            </tbody>
+          </table>
+          <div class="flex w-full mt-5 space-x-2 justify-end">
+            <%= will_paginate @workouts, renderer: WillPaginate::ActionView::LinkRenderer, class: "pagination" %>
+          </div>
+        </div>
+<%else%>
+
+<div class="workout-background">
+  <div class="workout-overlay"></div>
+  <h1 class="workout-title">Workouts</h1>
+</div>
+
+    <section class="pt-5">
+        <div class="container pt-5">
+            <div class="row p-2">
+             <% if @workouts.present? %>
+                <% @workouts.each do |workout| %>
+                <div class="col-md-4 p-2 mt-5">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                      <%= image_tag workout.image_url, class: "w-full" %>
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2"><%=workout.title%></div>
+                            <p class=" text-base">
+                              <%= truncate(workout.description, length: 120, omission: '...') %>                            
+                            </p>
+                        </div>
+                        <div class="px-6 pt-4 pb-2">
+                            <a href="/workouts/<%=workout.id%>" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">view</a>
+                        </div>
+                        </div>
+                </div>
+                <% end %>
+                <% else %>
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert">
+                        No workouts found!
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    <section>
+<%end%>

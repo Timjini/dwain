@@ -1,0 +1,16 @@
+
+<table style="width:100%" data-controller="training-table">
+  <thead>
+              <tr class="text-gray-400">
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Name</th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Training Type</th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 hidden md:table-cell">Coach</th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800">Date</th>
+                <th class="font-normal px-3 pt-0 pb-3 border-b border-gray-200 dark:border-gray-800 sm:text-gray-400 text-white">Actions</th>
+              </tr>
+            </thead>
+  <tbody>
+  
+    <%= render @training_sessions %>
+  </tbody>
+</table>

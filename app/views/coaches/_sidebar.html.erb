@@ -1,0 +1,57 @@
+<style>
+  button:hover{
+    background-color: #f0f4f8;
+  }
+   .fa-person-running{
+    font-size: 2rem;
+  }
+
+  .clicked{
+    color: #57534e;
+  }
+
+</style>
+<% current_path = request.path %>
+
+<div class="bg-grey-100 dark:bg-gray-900 dark:border-gray-800 w-24 flex-shrink-0 border-r border-gray-200 flex-col hidden sm:flex">
+  <div class="mt-5 h-16 text-blue-500 flex items-center justify-center">
+    <a href="/">
+    <%= image_tag "cfs-dark.png" , class:"w-14" %>
+    </a>
+  </div>
+  <div class="flex mx-auto flex-grow mt-6 flex-col text-gray-400 space-y-4">
+    <a href="/">
+      <button class="menu-btn m-2 h-12 w-14 dark:text-gray-500 rounded-md flex items-center justify-center <%= request.path == "/" ? "bg-stone-100 text-stone-600" : "" %>">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+      </button>
+    </a>
+    <a href="/trainings">
+      <button class="menu-btn m-2 h-12 w-14 dark:text-gray-500 rounded-md flex items-center justify-center <%= request.path == "/trainings" ? "bg-stone-100 text-stone-600" : "" %>">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+          </svg>
+      </button>
+    </a>
+    <a href="/workouts" class="hidden">
+      <button class=" menu-btn m-2 h-12 w-14 dark:text-gray-500 rounded-md flex items-center justify-center">
+        <i class="fa-solid fa-person-running <%= request.path == "/workouts" ? "clicked " : "" %>"></i>
+      </button>
+    </a>
+    <a href="/my_profile" class="hidden">
+      <button class="menu-btn m-2 h-12 w-14 dark:text-gray-500 rounded-md flex items-center justify-center <%= request.path == "/my_profile" ? "bg-stone-100 text-stone-600" : "" %>">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </button>
+    </a>
+  </div>
+  <div class="mt-auto mb-5 ml-3">
+    <%= button_to destroy_coach_session_path, method: :delete, class: "menu-btn m-2 h-12 w-14 dark:text-gray-500 rounded-md flex items-center justify-center" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="grey" >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+      </svg>
+    <% end %>
+  </div>
+</div>
