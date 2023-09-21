@@ -70,4 +70,6 @@ Rails.application.routes.draw do
   #contact form
   resources :contacts, only: [:new, :create, :index]
 
+  resources :athletes, only: [:new, :create, :index ,:show ,:edit, :update]
+
 end

@@ -2,11 +2,15 @@ class TrainingsController < ApplicationController
     require 'csv'
 
     def index
-        @trainings = Training.all
+
+        # @training_table = Training.all.paginate(page: params[:page], per_page: 10)
+        @trainings = Training.where('date >= ?', Date.today.beginning_of_day)
+                      .paginate(page: params[:page], per_page: 10)
         trainings_by_date = Hash.new { |hash, key| hash[key] = [] }
 
         # Group training data by date
-        @trainings.each do |training|
+        @training_table = Training.all
+        @training_table.each do |training|
         date = training.updated_at.to_date
         trainings_by_date[date] << training
         end
@@ -28,6 +32,8 @@ class TrainingsController < ApplicationController
         day_with_trainings = { date: day, trainings: trainings_by_date[day] || [] }
         @days_with_trainings << day_with_trainings
         end
+
+        @days_with_trainings.sort_by! { |day| day[:date] }
 
     end
 
