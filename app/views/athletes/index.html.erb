@@ -13,14 +13,17 @@
     <div class="w-full max-w-md p-4 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800 shadow-soft-xl border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 ">
         <div class="flex items-center justify-between mb-4">
             <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">
+            <%if @athlete.present?%>
             <%levels = @athletes.pluck(:level).last %> 
             <%=levels.titleize%> Group</h5>
             <a href="/athletes" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
                 View all
             </a>
+            <%end%>
     </div>
     <div class="flow-root">
             <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+            <% if @athletes.present?%>
             <%@athletes.each do |atl|%>
                 <li class="py-3 sm:py-4">
                     <div class="flex items-center space-x-4">
@@ -45,6 +48,23 @@
                     </div>
                 </li>
             <%end%>
+            <%else%>
+                <li class="mt-auto pt-2 flex items-center justify-center">
+                <div class="text-base font-semibold text-gray-900 dark:text-white">
+                    <span> There are no athletes at this level </span>
+                </div>
+            </li>
+            <%end%>
+            <li class="mt-auto pt-1 flex items-center justify-center">
+                <div class="text-base font-semibold text-gray-900 dark:text-white">
+                    <a href="/athletes/new" >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+
+                    </a>
+                </div>
+            </li>
             </ul>
     </div>
     </div>

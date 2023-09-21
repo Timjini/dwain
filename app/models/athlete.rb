@@ -1,13 +1,13 @@
 class Athlete < ApplicationRecord
-    belongs_to :user , optional: true
+  belongs_to :user , optional: true
+  has_one_attached :image
+
 
     enum level: {
-    "development" => 0,
-    "intermediate" => 1,
-    "advanced" => 2
+    development:0,
+    intermediate:1,
+    advance:2
   }
-
-   has_one_attached :image
 
    def image_thumbnail
     if image.attached?

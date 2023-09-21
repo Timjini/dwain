@@ -42,10 +42,10 @@
           <%= render 'shared/flash_messages' %> <!-- Add this line to render flash messages -->
   <main class="">
     <% if coach_signed_in? %>
-      <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex  text-sm">
+      <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex text-sm">
         <div class="flex-grow  h-full flex flex-col">
           <%= render 'components/topbar' %>
-          <div class="p-4 sm:ml-64 overflow-y-auto">
+          <div class="sm:ml-64 overflow-y-auto">
             <%= yield %>
           </div>
         </div>
