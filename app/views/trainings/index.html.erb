@@ -14,13 +14,15 @@ h1{
             <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
             </div>
             <%if current_coach.present? && current_coach.is_admin?%>
-              <a href="/training_sessions/new"class="inline-flex items-center h-8 pl-2.5 pr-2 ml-4 confirm-btn bg-gradient-to-r from-red-500 to-red-800 text-white font-bold py-3 px-4 rounded">
-                New Training Session
-              </a>
+             <span class="px-2"> Upload Csv </span>
+              <%= form_with(url: bulk_create_trainings_path, local: true, method: :post, multipart: true) do |form| %>
+                  <%= form.file_field :file, accept: '.csv' %>
+                  <%= form.submit 'Confirm', class:"inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500" %>
+              <% end %>
             <%end%>
             <div class="ml-auto text-gray-500 text-xs sm:inline-flex hidden items-center">
               <span class="mr-3">
-                Page <%= @trainings.current_page %> of <%= @trainings.total_pages %>
+                Page <%= @training_table.current_page %> of <%= @training_table.total_pages %>
               </span>
             </div>
           </div>
@@ -120,7 +122,7 @@ h1{
           </table>
 
            <div class="flex w-full mt-5 space-x-2 justify-end">
-            <%= will_paginate @trainings, renderer: WillPaginate::ActionView::LinkRenderer, class: "pagination" %>
+            <%= will_paginate @training_table, renderer: WillPaginate::ActionView::LinkRenderer, class: "pagination" %>
           </div>
         </div>
 

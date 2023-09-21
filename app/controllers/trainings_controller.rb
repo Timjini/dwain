@@ -3,9 +3,10 @@ class TrainingsController < ApplicationController
 
     def index
 
-        # @training_table = Training.all.paginate(page: params[:page], per_page: 10)
         @trainings = Training.where('date >= ?', Date.today.beginning_of_day)
                       .paginate(page: params[:page], per_page: 10)
+
+      
         trainings_by_date = Hash.new { |hash, key| hash[key] = [] }
 
         # Group training data by date

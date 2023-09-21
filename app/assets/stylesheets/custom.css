@@ -41,8 +41,17 @@
     background-color : #e5e5e5;
   }
 
+  .dashbox{
+    background-image: url('https://img.freepik.com/free-photo/closeup-texture-running-track-stadium_169016-17143.jpg?w=1380&t=st=1693986673~exp=1693987273~hmac=117d1d531b76ab2bda1d2660910464a0425417101afd78c5a06a254d1d8167a1');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-y: 200%;
+    color:#e5e5e5;
+  }
+
   .workout-background {
-    background-image: url('https://images.unsplash.com/photo-1502904550040-7534597429ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
+    background-image: url('https://img.freepik.com/free-photo/man-runner-stretching-legs-preparing-run-training-stadium-tracks-doing-warm-up_155003-3160.jpg?w=1380&t=st=1693986181~exp=1693986781~hmac=80961ebd1287fbe7d6873f687148b2c3c76dd1997cd91fe7ae66864b5a30db0f');
     background-position-y: 250%;
     min-height: 250px;
     background-size: cover;
