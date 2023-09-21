@@ -1,12 +1,13 @@
 class Athlete < ApplicationRecord
-    belongs_to :user , optional: true
-    enum level: {
-    development: 0,
-    intermediate: 1,
-    advanced: 2
-  } 
+  belongs_to :user , optional: true
+  has_one_attached :image
 
-   has_one_attached :image
+
+    enum level: {
+    development:0,
+    intermediate:1,
+    advance:2
+  }
 
    def image_thumbnail
     if image.attached?
@@ -39,5 +40,11 @@ class Athlete < ApplicationRecord
 
   def athlete_full_name
     "#{first_name} #{last_name}"
+  end
+
+  def full_name=(name)
+    parts = name.split(" ", 2)
+    self.first_name = parts[0]
+    self.last_name = parts[1]
   end
 end

@@ -42,20 +42,18 @@
           <%= render 'shared/flash_messages' %> <!-- Add this line to render flash messages -->
   <main class="">
     <% if coach_signed_in? %>
-      <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
-        <%= render 'coaches/sidebar' %>
-        <div class="flex-grow overflow-hidden h-full flex flex-col">
-          <%= render 'coaches/topbar' %>
-          <div class="flex-grow overflow-auto">
+      <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex text-sm">
+        <div class="flex-grow  h-full flex flex-col">
+          <%= render 'components/topbar' %>
+          <div class="sm:ml-64 overflow-y-auto">
             <%= yield %>
           </div>
         </div>
       </div>
     <% elsif user_signed_in? %>
-       <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex overflow-hidden text-sm">
-        <%= render 'students/sidebar' %>
+       <div class="bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600 h-screen flex  text-sm">
         <div class="flex-grow overflow-hidden h-full flex flex-col">
-          <%= render 'students/topbar' %>
+          <%= render 'components/topbar' %>
           <div class="flex-grow overflow-auto">
             <%= yield %>
           </div>
