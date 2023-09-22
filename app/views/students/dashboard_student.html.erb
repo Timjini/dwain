@@ -44,18 +44,27 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">My Homework</p>
+                            <% profile = Athlete.where(user_id: current_user.id).first %>
+                            <% if profile.present? %>
+                              <a href="/athletes/<%=profile.id%>">
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">My Profile</p>
                                 <h5 class="mb-0 font-bold">
                                     <span class="leading-normal text-sm font-weight-bolder text-lime-500"></span>
                                 </h5>
+                             </a>
+                             <%else%>
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm"></p>
+                                <h5 class="mb-0 font-bold">
+                                    <span class="leading-normal text-sm font-weight-bolder text-lime-500">
+                                    You have no profile
+                                    </span>
+                                </h5>
+                            <%end%>
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
                             <div class="inline-block h-8 text-center rounded-lg ">
-
                             <i class="fa-solid fa-stopwatch-20"></i>
-
-
                             </div>
                         </div>
                     </div>

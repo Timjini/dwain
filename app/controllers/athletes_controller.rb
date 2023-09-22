@@ -21,9 +21,9 @@ class AthletesController < ApplicationController
     end
 
     def create
-
         params[:athlete][:level] = params[:level].to_i
 
+        # user = User.find(params[:user_id])
 
           @athlete = Athlete.create!(athlete_params)
 
@@ -64,7 +64,7 @@ class AthletesController < ApplicationController
   end
 
   def athlete_params
-    params.require(:athlete).permit(:first_name, :last_name, :dob, :height, :weight, :email, :phone, :school_name, :address, :power_of_ten, :level, :image)
+    params.require(:athlete).permit(:first_name, :last_name, :dob, :height, :weight, :email, :phone, :school_name, :address, :power_of_ten, :level, :image, :user_id)
   end
 
 end
