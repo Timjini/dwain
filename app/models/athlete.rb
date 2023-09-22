@@ -21,7 +21,7 @@ class Athlete < ApplicationRecord
     def age
     now = Time.now.utc.to_date
     if dob.nil?
-      return "undefined"
+      return ""
     else
     now.year - dob.year - (dob.to_date.change(:year => now.year) > now ? 1 : 0)
     end
@@ -46,5 +46,9 @@ class Athlete < ApplicationRecord
     parts = name.split(" ", 2)
     self.first_name = parts[0]
     self.last_name = parts[1]
+  end
+
+  def full_address
+    "#{address} #{city}"
   end
 end

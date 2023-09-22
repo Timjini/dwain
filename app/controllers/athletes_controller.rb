@@ -21,24 +21,16 @@ class AthletesController < ApplicationController
     end
 
     def create
-         @athlete = Athlete.create(
-          # athlete_full_name: params[:athlete_full_name],
-          first_name: params[:first_name],
-          email: params[:email],
-          phone: params[:phone],
-          dob: params[:dob],
-          height: params[:height],
-          weight: params[:weight],
-          power_of_ten: params[:power_of_ten],
-          address: params[:address],
-          school_name: params[:school_name],
-          level: params[:level].to_i,
-         )
 
-        if  @athlete.save
+        params[:athlete][:level] = params[:level].to_i
+
+
+          @athlete = Athlete.create!(athlete_params)
+
+        if  @athlete.save!
             flash[:success] = "Athlete Profile created!"
             redirect_to  athlete_path(@athlete)
-            puts "#{params[:level]}"
+            puts "#{params[:height]}"
         else
             flash[:error] = "Ooops something went wrong!"
             render 'new'
@@ -47,6 +39,9 @@ class AthletesController < ApplicationController
 
 
     def update
+
+      params[:athlete][:level] = params[:level].to_i
+
       @athlete = Athlete.find(params[:id])
       if @athlete.update(athlete_params)
         flash[:success] = "Athlete updated"

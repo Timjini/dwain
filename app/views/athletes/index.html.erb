@@ -8,18 +8,21 @@
                 </svg>
     </a>
   </div>
-
-
+<% enum_hash = {0 => "development", 1 => "intermediate", 2 => "advance"} %>
     <div class="w-full max-w-md p-4 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800 shadow-soft-xl border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 ">
         <div class="flex items-center justify-between mb-4">
+        <% if params[:level].present?%>
             <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">
-            <%if @athlete.present?%>
-            <%levels = @athletes.pluck(:level).last %> 
-            <%=levels.titleize%> Group</h5>
+            <%= enum_hash[params[:level].to_i].capitalize %> Group
+            </h5>
+            <%else%>
+            <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">
+            All Groups
+            </h5>
+        <%end%>
             <a href="/athletes" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
                 View all
             </a>
-            <%end%>
     </div>
     <div class="flow-root">
             <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">

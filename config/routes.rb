@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
  
 #  devise_for :coaches, controllers: { sessions: 'devise/sessions' }
-  devise_for :users
+  devise_for :users, controllers: {
+  registrations: 'users/registrations',
+  sessions: 'users/sessions',
+  # Add other Devise actions/controllers as needed
+}
   devise_for :coaches
 
   # User routes
