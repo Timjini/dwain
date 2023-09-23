@@ -12,18 +12,14 @@ class User < ApplicationRecord
 
   has_one :subscription
 
-  def self.ransackable_attributes(auth_object = nil)
-    ['first_name', 'last_name', 'username', 'email'] # Specify the attributes you want to make searchable
-  end
 
-  def self.ransackable_associations(auth_object = nil)
-    [] # You can also specify associations to make searchable if needed
-  end
+  # USERS TYPES 
+  enum user_type: { athlete_parent: 0, athlete: 1 }
 
   def age
     now = Time.now.utc.to_date
     if dob.nil?
-      return "undefined"
+      return ""
     else
     now.year - dob.year - (dob.to_date.change(:year => now.year) > now ? 1 : 0)
     end

@@ -1,132 +1,296 @@
 <style>
-/* CSS */
-.password-container {
-  position: relative;
+
+.personal-info{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  gap:5px;
+  padding:0;
+  margin : 0 auto;
 }
-
-.toggle-password {
-  position: absolute;
-  top: 65%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  padding-right:20px;
-}
-
-/* Style the eye icon when password is visible */
-.password-visible .toggle-password {
-  color: #007bff;
-}
-
-/* mobile view */
-
-@media (max-width: 768px) {
-  .form {
-	width: 100%;
-	height: 100%;
-	padding: 0;
-	margin: 0;
-	border-radius: 0;
-  }
-  .form .form-control {
-	border-radius: 0;
-  }
-  .form .form-control:focus {
-	border-color: #007bff;
-	box-shadow: none;
-  }
-  .form .form-control:focus + .input-group-append .input-group-text {
-	border-color: #007bff;
-  }
-  .form .input-group-text {
-	border-radius: 0;
-  }
-  .form .input-group-text i {
-	font-size: 18px;
-  }
-  .form .btn-block {
-	border-radius: 0;
-  }
-  .form h1 {
-	font-size: 32px;
-	text-align: center;
-  }
-
-  .form p {
-	font-size: 14px;
-	text-align: center;
-  }
-
-}
-
-.coverside{
-	background-color:#b42429;
-  /* height:100%; */
-}
-
 
 </style>
+
+
 <div class="h-screen md:flex">
-  <div class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr coverside i justify-around items-center hidden">
-    <div>
-      <h1 class="text-white font-bold text-4xl font-sans">Chamber For Sport</h1>
-      <p class="text-white mt-1">Let’s Start The Race.</p>
-    </div>
-    <div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-    <div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-  </div>
+
   
-  <div class="form flex flex-wrap md:w-1/2 justify-center py-10 items-center bg-slate-50 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800  shadow-soft-xl">
+  <div class="form flex flex-wrap w-full justify-center py-10 items-center bg-slate-50 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800  shadow-soft-xl">
+    <div x-show="step !== 'complete'">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="p-32">
-        <div class="space-y-12">
-          <div class="border-b border-gray-900/10 pb-12">
-            <h2 class="text-base font-semibold leading-7 dark:text-white">Profile</h2>
-            <p class="mt-1 text-sm leading-6 text-gray-600">Edit your profile's Information</p>
-            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div class="sm:col-span-4">
-                <label for="username" class="block text-sm font-medium leading-6 dark:text-white">Username</label>
-                <div class="mt-2">
-                  <div class="flex flex-wrap rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                    <%= f.text_field :username, autocomplete: "name", class:"block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+      <script src="//unpkg.com/alpinejs" defer></script>
+      <body class="antialiased sans-serif bg-gray-200">
+        <div x-data="app()" x-cloak>
+          <div class="max-w-3xl mx-auto px-4 py-10 bg-slate-100 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800">
+
+            <div x-show.transition="step === 'complete'">
+              <div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
+                <div>
+                  <svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+
+                  <h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">Registration Success</h2>
+
+                  <div class="text-gray-600 mb-8">
+                    Thank you. We have sent you an email <%=@user.email%>. Please click the link in the message to activate your account.
+                  </div>
+
+                  <button
+                    @click="window.location.href = '/'"
+                    class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
+                  >Back to home</button>
+                </div>
+              </div>
+            </div>
+
+            <div x-show.transition="step != 'complete'">	
+              <!-- Top Navigation -->
+              <div class="border-b-2 py-4">
+                <div class="uppercase tracking-wide text-xs font-bold text-gray-500 mb-1 leading-tight" x-text="`Step: ${step} of 3`"></div>
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                  <div class="flex-1">
+                    <div x-show="step === 1">
+                      <div class="text-lg font-bold text-gray-700 leading-tight">Profile Information</div>
+                    </div>
+                    
+                    <div x-show="step === 2">
+                      <div class="text-lg font-bold text-gray-700 leading-tight">Your Password</div>
+                    </div>
+
+                    <div x-show="step === 3">
+                      <div class="text-lg font-bold text-gray-700 leading-tight">Tell me about yourself</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center md:w-64">
+                    <div class="w-full bg-white rounded-full mr-2">
+                      <div class="rounded-full bg-green-500 text-xs leading-none h-2 text-center text-white" :style="'width: '+ parseInt(step / 3 * 100) +'%'"></div>
+                    </div>
+                    <div class="text-xs w-10 text-gray-600" x-text="parseInt(step / 3 * 100) +'%'"></div>
                   </div>
                 </div>
               </div>
-              <div class="sm:col-span-2">
-                <label for="email" class="block text-sm font-medium leading-6 dark:text-white">Email address</label>
-                <div class="mt-2">
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+              <!-- /Top Navigation -->
+
+              <!-- Step Content -->
+              <div class="py-10">	
+                <div x-show.transition.in="step === 1">
+                <!-- IMAGE LOADER --------------------------------------- -->
+                <div class="mb-5 text-center">
+                    <div class="mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
+                      <%= image_tag(@user.avatar.url, id: "image", class: "object-cover w-full h-32 rounded-full", alt: "Avatar") if @user.avatar.present? %>
+                      <img id="image" class="object-cover w-full h-32 rounded-full" src="<%= asset_path('user.png') %>" alt="Avatar Preview" />
+                    </div>
+
+                    <label for="avatarInput" type="button" class="cursor-pointer inline-flex justify-between items-center focus:outline-none border py-2 px-4 rounded-lg shadow-sm text-left text-gray-600 bg-white hover:bg-gray-100 font-medium">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+                        <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+                        <circle cx="12" cy="13" r="3" />
+                      </svg>
+                      Browse Photo
+                    </label>
+
+                    <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Click to add profile picture</div>
+
+                    <%= f.file_field :avatar, class: "hidden", id: "avatarInput", accept: "image/*" %>
+                </div>
+                <!-- END OF IMAGE LOADER ------------------------------------>
+
+                <!-- PERSONAL INFORMATION -->
+                <div class="personal-info">
+                  <div class="mb-1">
+                    <label for="firstname" class="font-bold mb-1 text-gray-700 block">First Name</label>
+                    <%= f.text_field :first_name, class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+                  </div>
+                  <div class="mb-3">
+                    <label for="lastname" class="font-bold mb-1 text-gray-700 block">Last Name</label>
+                       <%= f.text_field :last_name, class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+                  </div>
+                  <div class="mb-5">
+                    <label for="email" class="font-bold mb-1 text-gray-700 block">Email</label>
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+                  </div>
+                  <div class="mb-5">
+                    <label for="email" class="font-bold mb-1 text-gray-700 block">Address</label>
+                      <%= f.text_area :address, autofocus: true, autocomplete: "address", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+                  </div>
                 </div>
               </div>
-              <div class="col-span-full">
-                <label for="photo" class="block text-sm font-medium leading-6 dark:text-white">Avatar</label>
-                <div class="mt-2 flex flex-wrap items-center gap-x-3">
-                  <%= f.file_field :avatar, class: "avatar-btn" %>
+                <div x-show.transition.in="step === 2">
+                  <div class="mb-5">
+                    <label for="password" class="font-bold mb-1 text-gray-700 block">Set up password</label>
+                    <div class="text-gray-600 mt-2 mb-4">
+                      Please create a secure password including the following criteria below.
+
+                      <ul class="list-disc text-sm ml-4 mt-2">
+                        <li>lowercase letters</li>
+                        <li>numbers</li>
+                        <li>capital letters</li>
+                        <li>special characters</li>
+                      </ul>	
+                    </div>
+
+                    <div class="relative">
+                      <%= f.password_field :password, 
+                        class: "block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", 
+                        type: "password", 
+                        "x-model": "password",
+                        "x-on:keydown": "checkPasswordStrength()",
+                        autocomplete: "new-password" %>
+                      <div class="absolute right-0 bottom-0 top-0 px-3 py-2 cursor-pointer" 
+                        @click="togglePassword = !togglePassword"
+                      >	
+                        <svg :class="{'hidden': !togglePassword, 'block': togglePassword }" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-gray-500" viewBox="0 0 24 24"><path d="M12 19c.946 0 1.81-.103 2.598-.281l-1.757-1.757C12.568 16.983 12.291 17 12 17c-5.351 0-7.424-3.846-7.926-5 .204-.47.674-1.381 1.508-2.297L4.184 8.305c-1.538 1.667-2.121 3.346-2.132 3.379-.069.205-.069.428 0 .633C2.073 12.383 4.367 19 12 19zM12 5c-1.837 0-3.346.396-4.604.981L3.707 2.293 2.293 3.707l18 18 1.414-1.414-3.319-3.319c2.614-1.951 3.547-4.615 3.561-4.657.069-.205.069-.428 0-.633C21.927 11.617 19.633 5 12 5zM16.972 15.558l-2.28-2.28C14.882 12.888 15 12.459 15 12c0-1.641-1.359-3-3-3-.459 0-.888.118-1.277.309L8.915 7.501C9.796 7.193 10.814 7 12 7c5.351 0 7.424 3.846 7.926 5C19.624 12.692 18.76 14.342 16.972 15.558z"/></svg>
+
+                        <svg :class="{'hidden': togglePassword, 'block': !togglePassword }" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-gray-500" viewBox="0 0 24 24"><path d="M12,9c-1.642,0-3,1.359-3,3c0,1.642,1.358,3,3,3c1.641,0,3-1.358,3-3C15,10.359,13.641,9,12,9z"/><path d="M12,5c-7.633,0-9.927,6.617-9.948,6.684L1.946,12l0.105,0.316C2.073,12.383,4.367,19,12,19s9.927-6.617,9.948-6.684 L22.054,12l-0.105-0.316C21.927,11.617,19.633,5,12,5z M12,17c-5.351,0-7.424-3.846-7.926-5C4.578,10.842,6.652,7,12,7 c5.351,0,7.424,3.846,7.926,5C19.422,13.158,17.348,17,12,17z"/></svg>
+                      </div>
+                    </div>
+                    
+                    <div class="flex items-center mt-4 h-3">
+                      <div class="w-2/3 flex justify-between h-2">	
+                        <div :class="{ 'bg-red-400': passwordStrengthText == 'Too weak' ||  passwordStrengthText == 'Could be stronger' || passwordStrengthText == 'Strong password' }" class="h-2 rounded-full mr-1 w-1/3 bg-gray-300"></div>
+                        <div :class="{ 'bg-orange-400': passwordStrengthText == 'Could be stronger' || passwordStrengthText == 'Strong password' }" class="h-2 rounded-full mr-1 w-1/3 bg-gray-300"></div>
+                        <div :class="{ 'bg-green-400': passwordStrengthText == 'Strong password' }" class="h-2 rounded-full w-1/3 bg-gray-300"></div>
+                      </div>
+                      <div x-text="passwordStrengthText" class="text-gray-500 font-medium text-sm ml-3 leading-none"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div x-show.transition.in="step === 3">
+                  <div class="mb-5">
+                    <label for="email" class="font-bold mb-1 text-gray-700 block">I' am</label>
+                    
+                    <div class="flex">
+                      <label
+                        class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm mr-4">
+                        <div class="text-teal-600 mr-3">
+                          <input type="radio" 
+                            x-model="user_type" 
+                            x-on:click="setUserType(0)" 
+                            class="form-radio focus:outline-none focus:shadow-outline" 
+                            value="0" />
+                        </div>
+                        <div class="select-none text-gray-700">a Parent of an Athlete(s)</div>
+                      </label>
+
+                      <label
+                        class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm">
+                        <div class="text-teal-600 mr-3">
+                          <input type="radio" 
+                            x-model="user_type" 
+                            x-on:click="setUserType(1)" 
+                            class="form-radio focus:outline-none focus:shadow-outline" 
+                            value="1" />
+                        </div>
+                        <div class="select-none text-gray-700">an Athlete</div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="mb-5">
+                    <label for="profession" class="font-bold mb-1 text-gray-700 block">Profession</label>
+                    <input type="profession"
+                      class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                      placeholder="eg. Web Developer">
+                  </div>
+                </div>
+              </div>
+              <!-- / Step Content -->
+            </div>
+          </div>
+
+          <!-- Bottom Navigation -->	
+          <div class="fixed bottom-0 left-0 right-0 py-3 bg-slate-50 dark:bg-transparent dark:bg-gradient-to-tl dark:from-gray-900 dark:to-slate-800" x-show="step != 'complete'">
+            <div class="max-w-3xl mx-auto px-4">
+              <div class="flex justify-between">
+                <div class="w-1/2">
+                  <button
+                    x-show="step > 1"
+                    @click="step--"
+                    type="button"
+                    class="text-center w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
+                  >Previous</button>
+                </div>
+
+                <div class="w-1/2 text-right">
+                  <button
+                    x-show="step < 3"
+                    @click="step++"
+                    type="button"
+                    onclick="preventFormSubmission()"
+                    class=" text-center w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-red-500 hover:bg-red-600 font-medium" 
+                  >Next</button>
+
+                  <button
+                    @click="step = 'complete'"
+                    x-show="step === 3"
+                    class="text-center w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
+                  >Complete</button>
+
                 </div>
               </div>
             </div>
           </div>
-          
-          <div class="border-b border-gray-900/10 pb-12">
-            <h2 class="text-base font-semibold leading-7 dark:text-white">Password</h2>
-            <div class="mt-2">
-              <div class="flex flex-wrap rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md mb-5">
-                <%= f.password_field :password, class:"block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-              </div>
-              <h2 class="text-base font-semibold leading-7 dark:text-white">Password Confirmation</h2>
-              <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                <%=f.password_field :password_confirmation, class:"block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-              </div>
-            </div>
-          </div>
+          <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->	
         </div>
-        
-        <div class="mt-6 flex flex-wrap items-center justify-end gap-x-6">
-          <%= link_to "Login", :back, class:"text-sm font-semibold leading-6 dark:text-white" %>
-          <%= f.submit "Sign Up", class:"rounded-md bg-red-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700" %>
-        </div>
-      </div>
+
+      </body>
     <% end %>
+    </div>
   </div>
 </div>
+
+<script>
+		function app() {
+			return {
+				step: 1, 
+				passwordStrengthText: '',
+				togglePassword: false,
+                image: '../assets/images/user.png',
+				password: '',
+				user_type: 0,
+
+				checkPasswordStrength() {
+					var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+					var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+
+					let value = this.password;
+
+					if (strongRegex.test(value)) {
+						this.passwordStrengthText = "Strong password";
+					} else if(mediumRegex.test(value)) {
+						this.passwordStrengthText = "Could be stronger";
+					} else {
+						this.passwordStrengthText = "Too weak";
+					}
+				}
+			}
+		}
+
+      const avatarInput = document.getElementById('avatarInput');
+      const avatarImage = document.getElementById('image');
+
+      avatarInput.addEventListener('change', function () {
+        const file = this.files[0];
+
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            avatarImage.src = e.target.result;
+          };
+
+          reader.readAsDataURL(file);
+        } else {
+          // Reset the image to the user's current avatar or a default image
+          avatarImage.src = "<%= @user.avatar.url if @user.avatar.present? %>";
+        }
+      });
+
+    function preventFormSubmission(event) {
+      event.preventDefault();
+    }
+	</script>

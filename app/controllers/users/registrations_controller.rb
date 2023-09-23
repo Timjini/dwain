@@ -1,14 +1,20 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-
+  include AthleteHelper
 
   def new
     @user = User.new
+
+    @role_labels = { "athlete" => "Athlete", "athlete_parent" => "Parent" }
   end
 
   def create
     @user = User.create(user_params)
 
-    if @user.persisted?  # Check if the user was successfully saved
+    puts "#{params.inspect}"
+
+    if @user.persisted? 
+      create_athlete_when_user_sign_in(@user)
+      puts "Athelete was successfully created"
       sign_in(@user)  # Manually sign in the user
       flash[:success] = "Athlete Profile created!"
       redirect_to dashboard_student_users_path
@@ -23,6 +29,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
   def user_params
-    params.require(:user).permit(:email, :encrypted_password, :dob, :phone , :username, :first_name, :last_name, :address, :city , :avatar , :password, :password_confirmation)
+    params.require(:user).permit(:email, :encrypted_password, :dob, :phone , :username, :first_name, :last_name, :address, :city , :avatar , :password, :password_confirmation , :user_type)
   end
 end
