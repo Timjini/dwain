@@ -44,9 +44,9 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                            <% profile = Athlete.where(user_id: current_user.id).first %>
+                            <% profile = AthleteProfile.where(user_id: current_user.id).first %>
                             <% if profile.present? %>
-                              <a href="/athletes/<%=profile.id%>">
+                              <a href="/athlete_profiles/<%=profile.id%>">
                                 <p class="mb-0 font-sans font-semibold leading-normal text-sm">My Profile</p>
                                 <h5 class="mb-0 font-bold">
                                     <span class="leading-normal text-sm font-weight-bolder text-lime-500"></span>

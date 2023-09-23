@@ -16,10 +16,10 @@ class ContactsController < ApplicationController
         end
       end
 
-      def index
+    def index
         @contacts = Contact.all
         render json: @contacts
-      end
+    end
 
     private
 

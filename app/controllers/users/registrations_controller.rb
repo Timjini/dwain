@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  include AthleteHelper
+  include AthleteProfileHelper
 
   def new
     @user = User.new
@@ -22,6 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to dashboard_student_users_path
     else
       flash[:alert] = "Oops, something went wrong!"
+      puts "Something went wrong"
       render 'new'
     end
   end

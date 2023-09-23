@@ -1,12 +1,25 @@
-<% flash.each do |type, message| %>
-  <script>
+<script>
+  function displaySweetAlert(type, message) {
+    var iconMapping = {
+      alert: "warning",
+      notice: "info",
+      success: "success",
+      error: "error"
+    };
+
     Swal.fire({
-      title: "<%= type.to_s.titleize %>",
-      html: "<%= message.html_safe %>",
-      icon: "<%= type.to_s %>",
+      icon: iconMapping[type],
+      title: type.charAt(0).toUpperCase() + type.slice(1), // Title in title case
+      html: message,
       showConfirmButton: false,
       timer: 3000
     });
-    console.log("flash")
+  }
+</script>
+
+<% flash.each do |type, message| %>
+  <script>
+    console.log("Loaded");
+    // displaySweetAlert("<%= type.to_s %>", "<%= message.html_safe %>");
   </script>
 <% end %>

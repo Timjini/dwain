@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   resources :users , only: %i[index show create update destroy new edit] do
           collection do
             get 'dashboard_student'
-            get 'profile' , to: 'students#profile'
+            get 'profile' , to: 'athletes#profile'
         end
     end
   
-  get 'goals_rewards_achievements' , to: 'students#goals_rewards_achievements'
+  get 'goals_rewards_achievements' , to: 'athletes#goals_rewards_achievements'
 
 
   resources :teams, only: [:index, :show, :edit, :update, :create, :new]
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   
   # Root path for users
   authenticated :user do
-    root to: 'students#dashboard_student', as: :user_root
+    root to: 'athletes#dashboard_student', as: :user_root
   end
   
   # For non-authenticated users, redirect them to the login page
@@ -74,6 +74,6 @@ Rails.application.routes.draw do
   #contact form
   resources :contacts, only: [:new, :create, :index]
 
-  resources :athletes, only: [:new, :create, :index ,:show ,:edit, :update]
+  resources :athlete_profiles, only: [:new, :create, :index ,:show ,:edit, :update]
 
 end

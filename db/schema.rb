@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_23_075155) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_23_101141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_23_075155) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "athletes", force: :cascade do |t|
+  create_table "athlete_profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.date "dob"
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_23_075155) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_athletes_on_user_id"
+    t.index ["user_id"], name: "index_athlete_profiles_on_user_id"
   end
 
   create_table "coaches", force: :cascade do |t|

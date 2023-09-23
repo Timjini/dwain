@@ -5,12 +5,12 @@
       <section>
         <div class=" bg-gray-100 dark:bg-gray-900 dark:text-white text-gray-600"></div>
         <div style="display:flex;flex-direction:row;align-items:center;padding:50px;flex-wrap:wrap;gap:5px;">
-            <a href="/athletes" class="mx-5">
+            <a href="/athlete_profiles" class="mx-5">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 white dark:white">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </a>
-            <h1 class="font-bold text-3xl">Edit Athlete's Profile</h1>
+            <h1 class="font-bold text-3xl">Edit AthleteProfile's Profile</h1>
         </div>
       </section>
       <section>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-2">
               <label class=" text-gray-900 dark:text-white">Level</label>
-              <%= select_tag :level, options_for_select(Athlete.levels.map { |key, value| [Athlete.human_attribute_name("level.#{key}"), value] }, @athlete.level.to_i), class: 'block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' %>
+              <%= select_tag :level, options_for_select(AthleteProfile.levels.map { |key, value| [AthleteProfile.human_attribute_name("level.#{key}"), value] }, @athlete.level.to_i), class: 'block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' %>
             </div>
         </div>
         <div class="row mt-5">
@@ -65,7 +65,7 @@
               <%= form.text_field :school_name , class:" description block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
             </div>
              <div class="col-md-3 p-2">
-              <label class=" text-gray-900 dark:text-white">Assign an Athlete (optional)</label>
+              <label class=" text-gray-900 dark:text-white">Assign an Athlete(optional)</label>
              <%= form.collection_select :user_id, User.all, :id, :full_name, { prompt: "Choose a User" }, { class: "block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" } %>
             </div>
             <div class="col-md-3 mt-5 text-end">

@@ -1,70 +1,73 @@
 class AthletesController < ApplicationController
 
-    def index
-      if params[:level].present?
-        @athletes = Athlete.where(level: params[:level])
-      else
-        @athletes = Athlete.all
-      end
-    end
-
     def show
-        @athlete = Athlete.find(params[:id])
+        @training_sessions = TrainingSession.where(coach_id: @coach.id)
+        @workouts = Workout.where(coach_id: @coach.id)
     end
 
-    def edit
-    @athlete = Athlete.find(params[:id])
-    end
-
-    def new
-      @athlete = Athlete.new
-    end
-
-    def create
-        params[:athlete][:level] = params[:level].to_i
-
-        # user = User.find(params[:user_id])
-
-          @athlete = Athlete.create!(athlete_params)
-
-        if  @athlete.save!
-            flash[:success] = "Athlete Profile created!"
-            redirect_to  athlete_path(@athlete)
-            puts "#{params[:height]}"
-        else
-            flash[:error] = "Ooops something went wrong!"
-            render 'new'
+     def profile
+        
+        @training_sessions = TrainingSession.all
+        @training_sessions_today = @training_sessions.select do |training_session|
+            training_session.day == Date.today.strftime("%A")
         end
+        
+        @workouts = Workout.last(3)
+
+        @last_workout = Workout.last
+    end
+
+    def dashboard_student
+        # get training sessions by today's day of the week
+        @training_sessions = TrainingSession.all
+        @training_sessions_today = @training_sessions.select do |training_session|
+            training_session.day == Date.today.strftime("%A")
+        end
+
+    end
+
+    def goals_rewards_achievements
+        @coach_feedback = Feedback.where(user_id: current_user.id).last
+
+
+        feedbacks = Feedback.where(user_id: current_user.id)
+
+            # Initialize a hash to store the best values for each attribute
+            @best_values = {
+            speed: nil,
+            endurance: nil,
+            technique: nil,
+            consistency: nil,
+            mental_status: nil,
+            race_strategy: nil,
+            attiude: nil
+            }
+
+            # Iterate through the feedback records to find the best value for each attribute
+            feedbacks.each do |feedback|
+            
+            speed = feedback.student_performance["speed"].to_i
+            endurance = feedback.student_performance["endurance"].to_i
+            technique = feedback.student_performance["technique"].to_i
+            consistency = feedback.student_performance["consistency"].to_i
+            mental_status = feedback.student_performance["mental_status"].to_i
+            race_strategy = feedback.student_performance["race_strategy"].to_i
+            attitude = feedback.student_performance["attitude"].to_i
+
+            # Update the best value for each attribute if a higher value is found
+            @best_values[:speed] = [speed, @best_values[:speed]].compact.max
+            @best_values[:endurance] = [endurance, @best_values[:endurance]].compact.max
+            @best_values[:technique] = [technique, @best_values[:technique]].compact.max
+            @best_values[:consistency] = [consistency, @best_values[:consistency]].compact.max
+            @best_values[:mental_status] = [mental_status, @best_values[:mental_status]].compact.max
+            @best_values[:race_strategy] = [race_strategy, @best_values[:race_strategy]].compact.max
+            @best_values[:attitude] = [attitude, @best_values[:attitude]].compact.max
+            end
+
+        
+
     end
 
 
-    def update
-
-      params[:athlete][:level] = params[:level].to_i
-
-      @athlete = Athlete.find(params[:id])
-      if @athlete.update(athlete_params)
-        flash[:success] = "Athlete updated"
-              redirect_to athlete_path(@athlete)
-      else
-        render :edit
-      end
-    end
-
-  private
-
-  def athlete_full_name
-    "#{first_name} #{last_name}"
-  end
-
-  def full_name=(name)
-    parts = name.split(" ", 2)
-    self.first_name = parts[0]
-    self.last_name = parts[1]
-  end
-
-  def athlete_params
-    params.require(:athlete).permit(:first_name, :last_name, :dob, :height, :weight, :email, :phone, :school_name, :address, :power_of_ten, :level, :image, :user_id)
-  end
 
 end

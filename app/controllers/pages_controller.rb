@@ -5,6 +5,10 @@ class PagesController < ApplicationController
   def index
   end
 
+  def admin
+    @contacts = Contact.all
+  end
+
   def contact
   end
 
